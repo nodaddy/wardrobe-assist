@@ -111,11 +111,11 @@ export const Wardrobe = () => {
            {wardrobeItems ? <Tabs defaultActiveKey="1" items={items} onChange={onChange} /> : <Alert style={{textAlign: 'left'}} message="Wardrobe is empty, kindly add items to your wardrobe!" type="warning" />}
            <br/>
            <br/>
-           {
+           {/* {
             !wardrobeItems && <img src="https://images.pexels.com/photos/7671166/pexels-photo-7671166.jpeg?auto=compress&cs=tinysrgb&w=600" 
             style={{width: '100%', borderRadius: '10px'}}
             />
-           }
+           } */}
         </div>
     )
 }
