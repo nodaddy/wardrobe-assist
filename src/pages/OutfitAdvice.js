@@ -107,6 +107,11 @@ export const OutfitAdvice = () => {
                     </div>
             } 
             {!response && <OutfitPromptExamples />}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }
