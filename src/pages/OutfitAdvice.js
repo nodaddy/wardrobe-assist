@@ -106,7 +106,7 @@ export const OutfitAdvice = () => {
                         </> : ''}
                     </div>
             } 
-            {!response && <OutfitPromptExamples />}
+            {/* {!response && <OutfitPromptExamples />} */}
             <br/>
             <br/>
             <br/>
