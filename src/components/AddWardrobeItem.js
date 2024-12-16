@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Select, Button, Upload, message } from 'antd';
+import { Form, Input, Select, Button, Upload, message, Spin } from 'antd';
 import { FileAddOutlined, PlusOutlined } from '@ant-design/icons';
 import { createOrUpdateWardrobeItem, createWardrobeItem, updateWardrobeItem } from '../services/wardrobeItems';
 import { uploadImageToFirebase } from '../services/storageService';
@@ -9,12 +9,17 @@ const { Option } = Select;
 const UploadOutfitForm = () => {
   const [form] = Form.useForm();
   const [imageUrl, setImageUrl] = useState(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const onFinish = (values) => {
     console.log('Received values of form:', values);
     if(imageUrl) {
       values.imageUrl = imageUrl;
-      createOrUpdateWardrobeItem(values);
+      createOrUpdateWardrobeItem(values).then(()=>{
+        // resest form fields
+        form.resetFields();
+        message.success('Item added successfully');
+      })
     } else {
         message.error('Please upload an image');
     }
@@ -105,16 +110,28 @@ const UploadOutfitForm = () => {
       >
         <input type="file" accept="image/*" onChange={(e) => {
           const file = e.target.files[0];
+          setUploadingImage(true);
           uploadImageToFirebase(file, 'wardrobeItems').then((url) => {
             setImageUrl(url);
+            setUploadingImage(false);
           }).catch((error) => {
             console.log(error);
+            setUploadingImage(false);
           });
         }} />
       </Form.Item>
+      {uploadingImage && <p>Uploading image... <Spin size="small" /></p>}
 
       <Form.Item wrapperCol={{ offset: 0, span: 14 }}>
-        <button type="primary" htmlType="submit">
+        <button
+        disabled={!imageUrl}
+        style={{
+          width: '100%',
+          height: '40px',
+          borderRadius: '5px',
+          border: 'none',
+          backgroundColor: '#f0f0f0',
+        }} type="primary" htmlType="submit">
           Submit
         </button>
       </Form.Item>

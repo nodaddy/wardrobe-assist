@@ -13,7 +13,7 @@ const navigate = useNavigate();
     <div style={{
         height: '100vh',
         width: '100%',
-        backgroundImage: 'url("https://images.pexels.com/photos/29775957/pexels-photo-29775957/free-photo-of-artistic-portrait-of-three-women-in-dim-lighting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+        backgroundImage: 'url("https://images.pexels.com/photos/3315286/pexels-photo-3315286.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     }}>
@@ -60,31 +60,33 @@ const navigate = useNavigate();
             });
         }
       }}>
-      {localStorage.getItem('user') && <><div align="left" style={{backgroundColor: ' #946d4c', color: '#fff', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none', fontSize: '20px'}}>
+      {/* {localStorage.getItem('user') && <><div align="left" style={{backgroundColor: ' #946d4c', color: '#fff', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none', fontSize: '20px'}}>
         {
              `Hi, ${JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]}`
         }
         
       </div> 
-      <br/></> }
+      <br/></> } */}
      
       <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px', fontWeight: 'bold'}}>
         {
-            localStorage.getItem('user') ? '' : <span style={{fontSize: '18px'}}><br/><GoogleOutlined /> Sign In  &nbsp; <br/>
+            localStorage.getItem('user') ? <span style={{fontSize: '18px'}}><br/>Hi, {JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]} &nbsp; <br/>
+            <br/></span> : <span style={{fontSize: '18px'}}><br/><GoogleOutlined /> Sign In  &nbsp; <br/>
             <br/></span>
         }
         
       </a> 
-     
-      <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px'}}>
-        App Demo
-      </a> 
-      <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px'}}>
-         Trending Looks
-      </a> 
-      <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px'}}>
-          Fashion Blog 
-      </a> 
+      </div>
+      <div align="right" style={{paddingRight: '20px'}}>
+        <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
+          App Demo
+        </a> 
+        <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
+          Trending Looks
+        </a> 
+        <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
+            Fashion Blog 
+        </a>
       </div>
     </div>
   );

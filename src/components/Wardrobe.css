@@ -1,0 +1,60 @@
+/* Overall container */
+.wardrobe-carousel-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f0f0f0; */
+    background-image: url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Randomly positioned items */
+  .carousel-item {
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease-in-out;
+    touch-action: none;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .carousel-item p {
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  /* Animation for items */
+  @keyframes randomize {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(3deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  
+  .carousel-item:hover {
+    animation: randomize 3s infinite;
+  }
+  
+  /* Media queries for better responsiveness */
+  @media (max-width: 768px) {
+    .carousel-item {
+      animation: none;
+    }
+}
+  
