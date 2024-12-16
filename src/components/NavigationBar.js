@@ -49,8 +49,8 @@ function Navbar() {
   </div>
   <div className="navbar-item">
     <a href="/additions" className="navbar-link">
-      <PlusCircleOutlined />
-      <span style={{ color: 'grey', fontSize: '13px', marginTop: '5px'  }}>Additions</span>
+      <ShopOutlined />
+      <span style={{ color: 'grey', fontSize: '13px', marginTop: '5px'  }}>Shop assist</span>
     </a>
   </div>
   {/* <div className="navbar-item">

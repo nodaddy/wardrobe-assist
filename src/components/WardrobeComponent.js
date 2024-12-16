@@ -128,13 +128,13 @@ export const WardrobeComponent = ({ list, loading }) => {
             <p>{selectedItem.name}</p>
             <p>{selectedItem.colors}</p>
 
-            <hr/>
             <br/>
             <button style={{
+              border: '0px',
               padding: '7px 20px'
             }} onClick={() => {
               setSelectedItem(null);
-            }}><DeleteOutlined /> Remove item from wardrobe</button>
+            }}><DeleteOutlined /> Remove item</button>
              
           </div>
         )}
