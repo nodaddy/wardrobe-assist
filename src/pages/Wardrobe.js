@@ -92,13 +92,12 @@ export const Wardrobe = () => {
     return (
         <div align="center" style={{padding: '0px 30px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
             <Banner title={`${user.displayName.split(' ')[0]}'s Wardrobe`} />
-            <br/>
-            <br/>
+            <br/> 
             <span
   type="primary"
   style={{
     position: 'fixed',            // Fix the position relative to the viewport
-    bottom: `${wardrobeItems?.length > 0 ? '100px' : '110px'}`,            // Distance from the bottom of the screen
+    bottom: `${wardrobeItems?.length > 0 ? '110px' : '110px'}`,            // Distance from the bottom of the screen
     right: `${wardrobeItems?.length > 0 ? '50px' : '30px'}`,                // Distance from the right of the screen
     cursor: 'pointer',            // Pointer cursor for hover effect
     fontSize: '14px',             // Font size

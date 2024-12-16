@@ -1,7 +1,7 @@
 /* Overall container */
 .wardrobe-carousel-container {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 186px);
     margin: 0;
     padding: 0;
     /* background-color: #f0f0f0; */
