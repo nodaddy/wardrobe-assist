@@ -30,7 +30,45 @@ export const fetchChatCompletion = async (message) => {
         }
       ],
 
-        temperature: 0.7,
+        temperature: 0,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      }
+    ).then(response => response.data).catch(error => {
+          console.error('Error fetching chat completion:', error);
+          throw error;
+        });
+
+    console.log(response.choices[0].message.content);
+    return response.choices[0].message.content;
+  } catch (error) {
+    console.error('Error fetching chat completion:', error);
+    throw error;
+  }
+};
+
+export const fetchChatCompletionForShopping = async (message) => {
+  const url = 'https://api.openai.com/v1/chat/completions';
+
+  console.log(message);
+
+  try {
+    const response = await axios.post(
+      url,
+      {
+        model: 'gpt-4o-mini',
+        messages: [
+        {role: "system", content: "you are a html code generator, only genrate code that is written inside <body> tag,  always give information in format of html code like you are an expert on styling and clothing,"},
+        {
+            role: "user",
+            content: message
+        }
+      ],
+      temperature: 0
       },
       {
         headers: {

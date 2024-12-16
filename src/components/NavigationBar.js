@@ -32,25 +32,25 @@ function Navbar() {
          <div className="navbar-item">
     <a style={{outline:'none'}} href="/" className="navbar-link">
       <HomeOutlined />
-      <span style={{ color: 'grey', fontSize: '13px', marginTop: '5px' }}>Home</span>
+      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Home</span>
     </a>
   </div>
   <div className="navbar-item">
     <a href="/wardrobe" className="navbar-link">
       <BoxPlotOutlined />
-      <span style={{ color: 'grey', fontSize: '13px', marginTop: '5px' }}>Wardrobe</span>
+      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Wardrobe</span>
     </a>
   </div>
   <div className="navbar-item">
     <a href="/outfitadvice" className="navbar-link">
       <SunOutlined/>
-      <span style={{ color: 'grey',  fontSize: '13px', marginTop: '5px'  }}>Assistant</span>
+      <span style={{ color: 'grey',  fontSize: '10px', marginTop: '5px'  }}>Assistant</span>
     </a>
   </div>
   <div className="navbar-item">
     <a href="/additions" className="navbar-link">
       <ShopOutlined />
-      <span style={{ color: 'grey', fontSize: '13px', marginTop: '5px'  }}>Shop assist</span>
+      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px'  }}>Shop assist</span>
     </a>
   </div>
   {/* <div className="navbar-item">

@@ -35,8 +35,7 @@ function App() {
           <UserDetailsForm />
 
         </div>
-      }
-      <React.StrictMode>
+      } 
         <BrowserRouter>
         <Navbar/>
         {
@@ -53,7 +52,6 @@ function App() {
           </Routes>
         }
         </BrowserRouter>
-      </React.StrictMode>
     </div>
   );
 }

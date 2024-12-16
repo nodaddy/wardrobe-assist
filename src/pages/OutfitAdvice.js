@@ -31,7 +31,7 @@ export const OutfitAdvice = () => {
                 })
             }
             
-            fetchChatCompletion(query + `Keep the response under 70 words, I have the following things in my inventry: ${JSON.stringify(data)}`).then((data) => {
+            fetchChatCompletion(query + `Keep the response under 70 words, I have the following things in my inventry: ${JSON.stringify(data)}, ${JSON.stringify(data)} and following are my details: ${localStorage.getItem('userProfile')}`).then((data) => {
                 console.log(data);
                 setResponse(data);
                 setLoadingResponse(false);
