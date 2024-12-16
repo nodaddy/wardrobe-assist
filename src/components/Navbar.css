@@ -5,7 +5,7 @@
     width: 100%;
     background-color: white;
     box-shadow: -4px -1px 16px 0px rgb(226, 226, 226);
-    
+    z-index: 999999;
     display: flex;
     padding: 15px 4px;
     justify-content: space-around;

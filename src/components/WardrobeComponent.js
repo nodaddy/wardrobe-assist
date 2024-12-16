@@ -112,7 +112,7 @@ export const WardrobeComponent = ({ list, loading }) => {
         }}
         onClick={() => setSelectedItem(item)}
         id={`item-${index}`} className="carousel-item">
-          <img src={item.imageUrl} alt={item.name} />
+          <img src={item.imageUrl} style={{}} alt={item.name} />
           {/* <p>{item.name}</p> */}
         </div>
       ))}
@@ -122,7 +122,8 @@ export const WardrobeComponent = ({ list, loading }) => {
         {selectedItem && (
           <div align="center">
             <img src={selectedItem.imageUrl} style={{
-              width: '60%'
+              width: '60%',
+              borderRadius: '10px'
             }} alt={selectedItem.name} />
             <p>{selectedItem.name}</p>
             <p>{selectedItem.colors}</p>

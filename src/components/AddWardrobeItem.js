@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Select, Button, Upload, message, Spin } from 'antd';
+import { Form, Input, Select, Button, Upload, message, Spin, notification } from 'antd';
 import { FileAddOutlined, PlusOutlined } from '@ant-design/icons';
 import { createOrUpdateWardrobeItem, createWardrobeItem, updateWardrobeItem } from '../services/wardrobeItems';
 import { uploadImageToFirebase } from '../services/storageService';
@@ -11,14 +11,21 @@ const UploadOutfitForm = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const [uploadingImage, setUploadingImage] = useState(false);
 
+  const [savingData, setSavingData] = useState(false);
+
   const onFinish = (values) => {
     console.log('Received values of form:', values);
     if(imageUrl) {
       values.imageUrl = imageUrl;
+      setSavingData(true);
       createOrUpdateWardrobeItem(values).then(()=>{
         // resest form fields
         form.resetFields();
-        message.success('Item added successfully');
+        notification.success({
+          message: 'Item added successfully',
+          placement: 'topRight'
+        })
+        setSavingData(false);
       })
     } else {
         message.error('Please upload an image');
@@ -132,7 +139,7 @@ const UploadOutfitForm = () => {
           border: 'none',
           backgroundColor: '#f0f0f0',
         }} type="primary" htmlType="submit">
-          Submit
+          {savingData ? <Spin size="small" /> : 'Submit'}
         </button>
       </Form.Item>
     </Form>
