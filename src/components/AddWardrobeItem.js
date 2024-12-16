@@ -21,11 +21,9 @@ const UploadOutfitForm = () => {
       createOrUpdateWardrobeItem(values).then(()=>{
         // resest form fields
         form.resetFields();
-        notification.success({
-          message: 'Item added successfully',
-          placement: 'topRight'
-        })
         setSavingData(false);
+      }).catch((e) => {
+        console.log(e);
       })
     } else {
         message.error('Please upload an image');

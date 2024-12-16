@@ -9,6 +9,7 @@ import { Meta } from "react-router-dom";
 import { fetchChatCompletion } from "../OpenAI";
 import { Loader } from "../components/Loader";
 import {WardrobeComponent} from "../components/WardrobeComponent";
+import { emptywar } from "../assets";
 
 export const Wardrobe = () => {
     const [open, setOpen] = useState(false);
@@ -94,33 +95,33 @@ export const Wardrobe = () => {
             <Banner title={`${user.displayName.split(' ')[0]}'s Wardrobe`} />
             <br/> 
             <span
-  type="primary"
-  style={{
-    position: 'fixed',            // Fix the position relative to the viewport
-    bottom: `${wardrobeItems?.length > 0 ? '110px' : '110px'}`,            // Distance from the bottom of the screen
-    right: `${wardrobeItems?.length > 0 ? '50px' : '30px'}`,                // Distance from the right of the screen
-    cursor: 'pointer',            // Pointer cursor for hover effect
-    fontSize: '14px',             // Font size
-    color: 'white',               // Text color
-    background: '#3C9CA0',        // Button background color
-    padding: '20px 20px',         // Padding inside the button
-    borderRadius: '50%',         // Rounded button appearance
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow for hover effect
-    transition: 'transform 0.2s ease, box-shadow 0.2s ease', // Smooth hover animation
-    zIndex: 1000,                 // Ensure it appears above other elements
-  }}
-  onClick={() => setOpen(true)}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.transform = 'scale(1.1)'; // Slightly enlarge on hover
-    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.3)'; // Intensify shadow
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.transform = 'scale(1)'; // Reset size
-    e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'; // Reset shadow
-  }}
->
-  <PlusCircleOutlined style={{fontSize: '30px'}} />
-</span>
+                type="primary"
+                style={{
+                  position: 'fixed',            // Fix the position relative to the viewport
+                  bottom: `${wardrobeItems?.length > 0 ? '110px' : '110px'}`,            // Distance from the bottom of the screen
+                  right: `${wardrobeItems?.length > 0 ? '50px' : '30px'}`,                // Distance from the right of the screen
+                  cursor: 'pointer',            // Pointer cursor for hover effect
+                  fontSize: '14px',             // Font size
+                  color: 'white',               // Text color
+                  background: '#3C9CA0',        // Button background color
+                  padding: '20px 20px',         // Padding inside the button
+                  borderRadius: '50%',         // Rounded button appearance
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow for hover effect
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease', // Smooth hover animation
+                  zIndex: 1000,                 // Ensure it appears above other elements
+                }}
+                onClick={() => setOpen(true)}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1)'; // Slightly enlarge on hover
+                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.3)'; // Intensify shadow
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)'; // Reset size
+                  e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)'; // Reset shadow
+                }}
+              >
+              <PlusCircleOutlined style={{fontSize: '30px'}} />
+            </span>
  
             <Drawer
                 title="Add New Wardrobe Item"
@@ -131,7 +132,20 @@ export const Wardrobe = () => {
             >
                 <UploadOutfitForm />
             </Drawer>
-            {wardrobeItems ? <WardrobeComponent loading={loading} list={wardrobeItems}></WardrobeComponent> : <Alert style={{textAlign: 'left'}} message="Wardrobe is empty, kindly add items to your wardrobe!" type="warning" />}
+            {wardrobeItems ? 
+            <WardrobeComponent loading={loading} list={wardrobeItems}></WardrobeComponent> : 
+            <>
+              <Alert style={{textAlign: 'left'}} message="Wardrobe is empty, kindly add items to your wardrobe!" type="warning" />
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <img src={emptywar} style={{width:'50%'}} />
+            </>
+          }
             
            {/* {
             !wardrobeItems && <img src="https://images.pexels.com/photos/7671166/pexels-photo-7671166.jpeg?auto=compress&cs=tinysrgb&w=600" 

@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Wardrobe.css";
-import { Drawer } from "antd";
+import { Drawer, Spin } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Loader } from "./Loader";
+import { deleteWardrobeItem } from "../services/wardrobeItems";
 
 export const WardrobeComponent = ({ list, loading }) => {
   const containerRef = useRef(null);
+
+  const [removingItem, setRemovingItem] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -32,7 +35,7 @@ export const WardrobeComponent = ({ list, loading }) => {
         do {
           randomX = Math.random() * (containerWidth - 110);
           randomY = Math.random() * (containerHeight - 400);
-          randomSize = Math.random() * 50 + 50;
+          randomSize = Math.random() * 80 + 20;
           attempts++;
         } while (
           Array.from(container.children).some((el) =>
@@ -104,39 +107,85 @@ export const WardrobeComponent = ({ list, loading }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   return (
-    <div className="wardrobe-carousel-container" ref={containerRef}>
-      
-      { loading ? <Loader /> : list.map((item, index) => (
+    <div className="wardrobe-carousel-container" style={{
+      backgroundImage: list && list.length > 0 ? 'url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")' : '',    }} ref={containerRef}>
+      { loading ? <Loader /> : list.length  == 0 ? <><br/><br/><br/><br/>Wardrobe is empty again!</> : list.map((item, index) => (
         <div key={item.id || index} style={{
           cursor: 'pointer',
         }}
         onClick={() => setSelectedItem(item)}
         id={`item-${index}`} className="carousel-item">
-          <img src={item.imageUrl} style={{}} alt={item.name} />
+          <img src={item.imageUrl} style={{borderRadius: '10px'}} alt={item.name} />
           {/* <p>{item.name}</p> */}
         </div>
       ))}
-      <Drawer width={`80%`} title="Wardrobe" placement="right" onClose={() => {
+      <Drawer width={`80%`} style={{}} title="Wardrobe" placement="right" onClose={() => {
         setSelectedItem(null);
       }} open={selectedItem}>
         {selectedItem && (
-          <div align="center">
-            <img src={selectedItem.imageUrl} style={{
-              width: '60%',
-              borderRadius: '10px'
-            }} alt={selectedItem.name} />
-            <p>{selectedItem.name}</p>
-            <p>{selectedItem.colors}</p>
-
-            <br/>
-            <button style={{
-              border: '0px',
-              padding: '7px 20px'
-            }} onClick={() => {
-              setSelectedItem(null);
-            }}><DeleteOutlined /> Remove item</button>
-             
-          </div>
+       <div align="center" style={{
+        fontFamily: "'Playfair Display', serif", // Elegant, luxurious font
+        textAlign: 'center',
+        padding: '20px',
+        backgroundColor: '#f8f8f8', // Light, neutral background for luxury vibe
+        borderRadius: '15px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)', // Soft shadow for elegance
+        width: '80%',
+        margin: 'auto',
+      }}>
+        <img 
+          src={selectedItem.imageUrl} 
+          alt={selectedItem.name} 
+          style={{
+            width: '90%',
+            borderRadius: '15px', // Rounded image for elegance
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)', // Soft shadow to give depth
+          }} 
+        />
+        <h2 style={{
+          fontSize: '2rem',
+          fontWeight: '700',
+          color: '#333', // Dark text for readability
+          margin: '10px 0',
+        }}>
+          {selectedItem.name}
+        </h2>
+        <p style={{
+          fontSize: '1.1rem',
+          color: '#888', // Subtle text color
+          fontWeight: '400',
+          marginBottom: '20px',
+        }}>
+          {selectedItem.colors}
+        </p>
+      
+        <button 
+          style={{
+            backgroundColor: 'grey', // Dark red for luxury feel
+            color: '#fff',
+            padding: '12px 30px',
+            border: 'none',
+            borderRadius: '30px',
+            fontSize: '1rem',
+            fontWeight: '500',
+            cursor: 'pointer',
+            transition: '0.3s',
+          }} 
+          onClick={() => {
+            setRemovingItem(true);
+            deleteWardrobeItem(list.filter((item) => item.name !== selectedItem.name && item.colors !== selectedItem.colors)).then((data) => {
+              console.log(data);
+              setRemovingItem(false);
+              window.location.reload();
+            }).catch((error) => {
+              console.log(error);
+              setRemovingItem(false);
+            });
+          }}>
+          <DeleteOutlined /> { removingItem ? <>&nbsp;Removing ...</> : <>&nbsp;Remove item</> }
+        </button>
+      </div>
+      
         )}
       </Drawer>
     </div>

@@ -30,3 +30,10 @@ export const getWardrobeItems = async () => {
   const docSnapshot = await getDoc(userDocRef);
   return docSnapshot.data();
 }
+
+export const  deleteWardrobeItem = async (items) => {
+  const userDocRef = doc(db, "Wardrobe", JSON.parse(localStorage.getItem('user')).email);
+  await updateDoc(userDocRef, {
+    items: items
+  });
+}
