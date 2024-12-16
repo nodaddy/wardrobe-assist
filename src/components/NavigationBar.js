@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Navbar.css';
-import { BoxPlotOutlined, CiOutlined, HomeFilled, HomeOutlined, MessageOutlined, PlusCircleOutlined, SettingOutlined, ShopOutlined, SunOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, BoxPlotOutlined, CiOutlined, HomeFilled, HomeOutlined, MessageOutlined, PlusCircleOutlined, SettingOutlined, ShopOutlined, SunOutlined } from '@ant-design/icons';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +37,7 @@ function Navbar() {
   </div>
   <div className="navbar-item">
     <a href="/wardrobe" className="navbar-link">
-      <BoxPlotOutlined />
+      <AppstoreOutlined />
       <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Wardrobe</span>
     </a>
   </div>
