@@ -1,7 +1,7 @@
 import { Input } from "antd";
 import { Banner } from "../components/Banner"
 import { useState } from "react";
-import { EyeFilled, FileImageOutlined, RightCircleOutlined, RightOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
+import { EyeFilled, FileImageOutlined, MessageOutlined, RightCircleOutlined, RightOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
 import { fetchChatCompletion } from "../OpenAI";
 import { getWardrobeItems } from "../services/wardrobeItems";
 import { Loader } from "../components/Loader";
@@ -44,7 +44,7 @@ export const OutfitAdvice = () => {
 
     return (
         <div style={{padding: '0px 30px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
-             <Banner title="Outfit Assistant" />
+             <Banner icon={<MessageOutlined />} title="Outfit Assistant" />
              <br/>
              <br/>
              <img src={assist} style={{width: '130px'}} />

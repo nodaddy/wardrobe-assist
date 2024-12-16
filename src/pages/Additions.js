@@ -1,7 +1,7 @@
 import { Input } from "antd";
 import { Banner } from "../components/Banner"
 import { useEffect, useState } from "react";
-import { EyeFilled, FileImageOutlined, RightCircleOutlined, RightOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
+import { EyeFilled, FileImageOutlined, RightCircleOutlined, RightOutlined, ShopOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
 import { fetchChatCompletion, fetchChatCompletionForShopping } from "../OpenAI";
 import { getWardrobeItems } from "../services/wardrobeItems";
 import { Loader } from "../components/Loader";
@@ -39,7 +39,19 @@ export const Additions = () => {
 
     return (
         <div style={{padding: '0px 30px', margin: '0px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
-        <Banner title="Shopping Assistant" /> 
+        <Banner icon={<ShopOutlined style={{color: 'white'}} />} title="Shopping Assistant" /> 
+        <br/>
+        <div
+                align="left"
+                style={{
+                    color: 'white',
+                    background: '#946d4c',
+                    padding: '10px',
+                    borderRadius: '8px',
+                    fontSize: '12px'
+                }}>
+                    <EyeFilled style={{color: 'white'}} />&nbsp;&nbsp;These recommendations are based on your wardrobe and your user details.
+                </div> 
                 {loadingResponse && <div align="center"><Loader /><br/><br/><br/></div>}
                 <br/>
                 <br/>

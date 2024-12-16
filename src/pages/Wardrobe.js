@@ -1,4 +1,4 @@
-import { ArrowLeftOutlined, ArrowRightOutlined, ExclamationCircleOutlined, FileAddFilled, FileAddOutlined, PlusCircleFilled, PlusCircleOutlined, UploadOutlined } from "@ant-design/icons"
+import { ArrowLeftOutlined, ArrowRightOutlined, BoxPlotOutlined, ExclamationCircleOutlined, FileAddFilled, FileAddOutlined, PlusCircleFilled, PlusCircleOutlined, UploadOutlined } from "@ant-design/icons"
 import { Banner } from "../components/Banner"
 import { Alert, Button, Card, Drawer, Tabs, Upload, message } from "antd"
 import UploadOutfitForm from "../components/AddWardrobeItem";
@@ -92,7 +92,7 @@ export const Wardrobe = () => {
 
     return (
         <div align="center" style={{padding: '0px 30px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
-            <Banner title={`${user.displayName.split(' ')[0]}'s Wardrobe`} />
+            <Banner icon={<BoxPlotOutlined style={{fontSize: '25px'}} />} title={`${user.displayName.split(' ')[0]}'s Wardrobe`} />
             <br/> 
             <span
                 type="primary"

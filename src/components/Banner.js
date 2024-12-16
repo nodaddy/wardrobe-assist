@@ -1,4 +1,4 @@
-export const Banner = ({title}) => {
+export const Banner = ({title, icon}) => {
     return (
         <div className="banner" style={{
             background: '#946d4c',
@@ -6,7 +6,7 @@ export const Banner = ({title}) => {
             marginLeft: '-30px',
             padding: '5px 0px'
         }}> 
-            <h2 style={{color: 'white', paddingLeft: '30px'}} align="left">{title}</h2> 
+            <h2 style={{color: 'white', paddingLeft: '30px'}} align="left">{icon} &nbsp;{title}</h2> 
         </div>
     )
 }
