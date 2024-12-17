@@ -5,12 +5,25 @@ import { auth, provider } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOutlined } from '@ant-design/icons';
 import { Tag } from 'antd';
+import { Wardrobe } from './Wardrobe';
+import { OutfitAdvice } from './OutfitAdvice';
+import { Additions } from './Additions';
+import Navbar from '../components/NavigationBar';
 
 
 function LandingPage() {
 const navigate = useNavigate();
-  return (
-    <div style={{
+const [currentView, setCurrentView] = React.useState('home');
+
+const onChange  = (key) => {
+  console.log(key);
+  setCurrentView(key);
+};
+
+  return (<>
+    <Navbar onChange={onChange} />
+    {currentView === 'home' ?
+    <><div style={{
         height: '100vh',
         width: '100%',
         backgroundImage: 'url("https://images.pexels.com/photos/3315286/pexels-photo-3315286.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
@@ -89,6 +102,16 @@ const navigate = useNavigate();
         </a>
       </div>
     </div>
+    </>
+    :
+    currentView === 'wardrobe' ? <Wardrobe /> 
+    :
+    currentView === 'outfitadvice' ? <OutfitAdvice />
+    :
+    currentView === 'additions' ? <Additions />
+    :
+    null}
+    </>
   );
 }
 

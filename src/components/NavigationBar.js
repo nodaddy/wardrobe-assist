@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Navbar.css';
 import { AppstoreOutlined, BoxPlotOutlined, CiOutlined, HomeFilled, HomeOutlined, MessageOutlined, PlusCircleOutlined, SettingOutlined, ShopOutlined, SunOutlined } from '@ant-design/icons';
 
-function Navbar() {
+function Navbar({onChange}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -30,28 +30,40 @@ function Navbar() {
   return (
     <nav className="navbar-bottom">
          <div className="navbar-item">
-    <a style={{outline:'none'}} href="/" className="navbar-link">
+    <span onClick={() => {
+      onChange('home');
+    }} style={{outline:'none'}} href="/" className="navbar-link">
       <HomeOutlined />
       <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Home</span>
-    </a>
+    </span>
   </div>
   <div className="navbar-item">
-    <a href="/wardrobe" className="navbar-link">
+    <span onClick={() => {
+      onChange('wardrobe');
+    }} href="/wardrobe" className="navbar-link">
       <AppstoreOutlined />
       <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Wardrobe</span>
-    </a>
+    </span>
   </div>
   <div className="navbar-item">
-    <a href="/outfitadvice" className="navbar-link">
+    <span 
+    onClick={() => {
+      onChange('outfitadvice');
+    }}
+    href="/outfitadvice" className="navbar-link">
       <MessageOutlined />
       <span style={{ color: 'grey',  fontSize: '10px', marginTop: '5px'  }}>Assistant</span>
-    </a>
+    </span>
   </div>
   <div className="navbar-item">
-    <a href="/additions" className="navbar-link">
+    <span
+    onClick={() => {
+      onChange('additions');
+    }}
+    href="/additions" className="navbar-link">
       <ShopOutlined />
       <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px'  }}>Shop assist</span>
-    </a>
+    </span>
   </div>
   {/* <div className="navbar-item">
     <a href="/settings" className="navbar-link">

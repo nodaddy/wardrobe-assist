@@ -37,7 +37,7 @@ function App() {
         </div>
       } 
         <BrowserRouter>
-        <Navbar/>
+        {/* <Navbar/> */}
         {
           !localStorage.getItem('user') ? 
           <Routes>
