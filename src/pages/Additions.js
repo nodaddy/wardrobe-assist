@@ -44,13 +44,14 @@ export const Additions = () => {
         <div
                 align="left"
                 style={{
-                    color: 'white',
-                    background: '#946d4c',
+                    color: '#946d4c',
+                    background: 'white',
                     padding: '10px',
                     borderRadius: '8px',
-                    fontSize: '12px'
+                    fontSize: '12px',
+                    border: '1px solid #c89468'
                 }}>
-                    <EyeFilled style={{color: 'white'}} />&nbsp;&nbsp;These recommendations are based on your wardrobe and your user details.
+                    <EyeFilled style={{color: '#946d4c'}} />&nbsp;&nbsp;These recommendations are based on your wardrobe and your user details.
                 </div> 
                 {loadingResponse && <div align="center"><Loader /><br/><br/><br/></div>}
                 <br/>

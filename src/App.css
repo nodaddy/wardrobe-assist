@@ -37,3 +37,37 @@
     transform: rotate(360deg);
   }
 }
+
+.install-button {
+  background: linear-gradient(135deg, #4CAF50, #246d28); /* Trustworthy green gradient */
+  color: white;
+  font-family: 'Arial', sans-serif; 
+  font-weight: 500;
+  border: none;
+  font-size: 17px;
+  border-radius: 0px 0px 8px 8px;
+  padding: 5px 15px;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  outline: none;
+}
+
+.install-button:hover {
+  background: linear-gradient(135deg, #43A047, #1B5E20); /* Darker shade on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+.install-button:active {
+  background: linear-gradient(135deg, #388E3C, #1B5E20); /* Even darker when clicked */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Pressed down shadow */
+  transform: translateY(0); /* Reset lift effect */
+}
+
+.install-button:focus {
+  border: 2px solid #81C784; /* Soft outline for accessibility */
+}
