@@ -108,7 +108,7 @@ export const WardrobeComponent = ({ list, loading }) => {
 
   return (
     <div className="wardrobe-carousel-container" style={{
-      border: '3px dashed silver',
+      border: '1px dashed silver',
       backgroundImage: list && list.length > 0 ? 'url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")' : '',    }} ref={containerRef}>
       { loading ? <Loader /> : list.length  == 0 ? <><br/><br/><br/><br/>Wardrobe is empty again!</> : list.map((item, index) => (
         <div key={item.id || index} style={{
