@@ -30,9 +30,9 @@ const onChange  = (key) => {
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     }}>
-      <div style={{backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '5px 0px'}}>
-      <h1 style={{color: ' #946d4c', fontSize: '45px', padding: '0px 30px', marginBottom: '0px'}} align="left">Unlock Your Wardrobe's Potential</h1>
-      <h3 style={{color: ' #946d4c', padding: '0px 30px', marginTop: '0px', fontWeight: '500'}} align="left">Discover endless outfit possibilities, end indecisiveness with just a few taps.</h3>
+      <div style={{backgroundColor: '#946d4c', padding: '5px 0px'}}>
+      <h2 style={{color: ' white', fontSize: '45px', padding: '0px 30px', marginBottom: '10px', fontWeight: '600'}} align="left">Unlock Your Wardrobe's Potential</h2>
+      <h3 style={{color: ' whitesmoke', padding: '0px 30px', marginTop: '0px', fontWeight: '500'}} align="left">Discover endless outfit possibilities, end indecisiveness with just a few taps.</h3>
       <br/>
       </div>
       <br/> 
