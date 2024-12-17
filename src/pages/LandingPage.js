@@ -10,6 +10,7 @@ import { OutfitAdvice } from './OutfitAdvice';
 import { Additions } from './Additions';
 import Navbar from '../components/NavigationBar';
 import { Settings } from './Settings';
+import { logo } from '../assets';
 
 
 function LandingPage() {
@@ -32,7 +33,9 @@ const onChange  = (key) => {
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     }}>
-      <div style={{backgroundColor: '#946d4c', padding: '5px 0px'}}>
+     
+      <div style={{backgroundColor: '#946d4c', padding: '5px 0px'}} align="left">
+      <img src={logo} style={{width:'150px', marginLeft: '30px', marginTop: '30px'}} />
       <h2 style={{color: ' white', fontSize: '45px', padding: '0px 30px', marginBottom: '10px', fontWeight: '600'}} align="left">Unlock Your Wardrobe's Potential</h2>
       <h3 style={{color: ' whitesmoke', padding: '0px 30px', marginTop: '0px', fontWeight: '500'}} align="left">Discover endless outfit possibilities, end indecisiveness with just a few taps.</h3>
       <br/>

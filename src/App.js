@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import Navbar from './components/NavigationBar';
 import LandingPage from './pages/LandingPage';

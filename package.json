@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
+    "@imgly/background-removal": "^1.5.7",
     "antd": "^5.22.4",
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
