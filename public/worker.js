@@ -1,4 +1,4 @@
-var CACHE_NAME = 'pwa-task-manager';
+const CACHE_NAME = `pwa-task-manager-v${Math.random().toString(36).substr(2, 9)}`;
 var urlsToCache = [
   '/',
   '/completed'
