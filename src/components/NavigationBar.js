@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Navbar.css';
 import { AppstoreOutlined, BoxPlotOutlined, CiOutlined, HomeFilled, HomeOutlined, MessageOutlined, PlusCircleOutlined, SettingOutlined, ShopOutlined, SunOutlined } from '@ant-design/icons';
 
-function Navbar({onChange}) {
+function Navbar({onChange, currentView}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -32,17 +32,17 @@ function Navbar({onChange}) {
          <div className="navbar-item">
     <span onClick={() => {
       onChange('home');
-    }} style={{outline:'none'}} href="/" className="navbar-link">
-      <HomeOutlined style={{ color: 'grey', fontSize: '18px'}}/>
-      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Home</span>
+    }} style={{outline:'none', color: `${currentView === 'home' ? '#946d4c' : 'grey'}`}} href="/" className="navbar-link">
+      <HomeOutlined style={{ fontSize: '18px'}}/>
+      <span style={{ fontSize: '10px', marginTop: '5px' }}>Home</span>
     </span>
   </div>
   <div className="navbar-item">
     <span onClick={() => {
       onChange('wardrobe');
-    }} href="/wardrobe" className="navbar-link">
-      <AppstoreOutlined style={{ color: 'grey', fontSize: '18px'}} />
-      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Wardrobe</span>
+    }} href="/wardrobe" style={{color: currentView === 'wardrobe' ? '#946d4c' : 'grey'}} className="navbar-link">
+      <AppstoreOutlined style={{  fontSize: '18px'}} />
+      <span style={{ fontSize: '10px', marginTop: '5px' }}>Wardrobe</span>
     </span>
   </div>
   <div className="navbar-item">

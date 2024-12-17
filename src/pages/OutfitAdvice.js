@@ -91,7 +91,7 @@ export const OutfitAdvice = () => {
                             style={{padding: '10px', background: '#3C9CA0', color: 'white', borderRadius: '10px'}}
                         >{response}</p>
                        
-                        <button style={{
+                        {/* <button style={{
                             background: '#946d4c',
                             color: 'white',
                             padding: '8px 10px',
@@ -101,7 +101,7 @@ export const OutfitAdvice = () => {
                         onClick={() => {
                            
                         }}
-                        ><FileImageOutlined /> See images for these suggestions</button>
+                        ><FileImageOutlined /> See images for these suggestions</button> */}
 
                         </> : ''}
                     </div>

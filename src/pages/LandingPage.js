@@ -25,7 +25,7 @@ const onChange  = (key) => {
 };
 
   return (<>
-    { localStorage.getItem('user') && <Navbar onChange={onChange} /> }
+    { localStorage.getItem('user') && <Navbar currentView={currentView} onChange={onChange} /> }
     {currentView === 'home' ?
     <><div style={{
         height: '100vh',
