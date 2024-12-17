@@ -54,7 +54,7 @@ export const OutfitAdvice = () => {
              <div align="right"> 
                 
                 <Input.TextArea
-                    placeholder="Type here... ask me anything, explain in detail if you can e.g. 'What should I wear to the party tonight, I am confused between a white t-shirt and a blue t-shirt, should I pair them up with jeans or formal pants?'"
+                    placeholder="Type here... (Don't forget to mention the weather) e.g What should I wear to the party tonight? I'm torn between a white t-shirt and a blue t-shirt. Should I pair them with jeans or formal pants, it is a hot evening"
                     value={query}
                     autoSize={{ minRows: 3}}
                     onChange={handleChange}

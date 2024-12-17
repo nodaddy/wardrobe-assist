@@ -33,7 +33,7 @@ function Navbar({onChange}) {
     <span onClick={() => {
       onChange('home');
     }} style={{outline:'none'}} href="/" className="navbar-link">
-      <HomeOutlined />
+      <HomeOutlined style={{ color: 'grey', fontSize: '18px'}}/>
       <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Home</span>
     </span>
   </div>
@@ -41,7 +41,7 @@ function Navbar({onChange}) {
     <span onClick={() => {
       onChange('wardrobe');
     }} href="/wardrobe" className="navbar-link">
-      <AppstoreOutlined />
+      <AppstoreOutlined style={{ color: 'grey', fontSize: '18px'}} />
       <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px' }}>Wardrobe</span>
     </span>
   </div>
@@ -51,7 +51,7 @@ function Navbar({onChange}) {
       onChange('outfitadvice');
     }}
     href="/outfitadvice" className="navbar-link">
-      <MessageOutlined />
+      <MessageOutlined style={{ color: 'grey', fontSize: '18px'}} />
       <span style={{ color: 'grey',  fontSize: '10px', marginTop: '5px'  }}>Assistant</span>
     </span>
   </div>
@@ -61,16 +61,18 @@ function Navbar({onChange}) {
       onChange('additions');
     }}
     href="/additions" className="navbar-link">
-      <ShopOutlined />
+      <ShopOutlined style={{ color: 'grey', fontSize: '18px'}} />
       <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px'  }}>Shop assist</span>
     </span>
   </div>
-  {/* <div className="navbar-item">
-    <a href="/settings" className="navbar-link">
-      <SettingOutlined/>
-      <span style={{ color: 'grey', fontSize: '14px', marginTop: '5px'  }}>Settings</span>
-    </a>
-  </div> */}
+    <div className="navbar-item">
+    <span onClick={() => {
+      onChange('settings');
+    }} href="/settings" className="navbar-link">
+      <SettingOutlined style={{ color: 'grey', fontSize: '18px'}}/>
+      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px'  }}>Settings</span>
+    </span>
+  </div> 
 </nav>
   );
 }

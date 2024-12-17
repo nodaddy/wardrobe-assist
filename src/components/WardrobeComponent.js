@@ -5,7 +5,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { Loader } from "./Loader";
 import { deleteWardrobeItem } from "../services/wardrobeItems";
 
-export const WardrobeComponent = ({ list, loading }) => {
+export const WardrobeComponent = ({ list, loading, loadItems }) => {
   const containerRef = useRef(null);
 
   const [removingItem, setRemovingItem] = useState(false);
@@ -177,7 +177,8 @@ export const WardrobeComponent = ({ list, loading }) => {
             deleteWardrobeItem(list.filter((item) => item.name !== selectedItem.name && item.colors !== selectedItem.colors)).then((data) => {
               console.log(data);
               setRemovingItem(false);
-              window.location.reload();
+              loadItems();
+              setSelectedItem(null);
             }).catch((error) => {
               console.log(error);
               setRemovingItem(false);

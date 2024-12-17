@@ -11,11 +11,14 @@ import React, { useEffect, useState } from 'react';
 import { getUserProfile } from './services/profileService';
 import UserDetailsForm from './components/UserDetailsForm';
 import { AppstoreAddOutlined, MobileOutlined } from '@ant-design/icons';
+import LocationPrompt from './components/Location';
 
 function App() {
   const [userProfile, setUserProfile] = useState({});
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
+
+  // localStorage.removeItem('userLocation');
 
   useEffect(() => {
     getUserProfile().then((data) => {
@@ -65,6 +68,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* <LocationPrompt /> */}
       {showInstallButton && (
         <button onClick={handleInstallClick} className='install-button'>
          <AppstoreAddOutlined /> Install App

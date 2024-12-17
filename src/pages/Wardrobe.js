@@ -17,6 +17,17 @@ export const Wardrobe = () => {
 
     const [loading, setLoading] = useState(false);
 
+    const loadItems = () => {
+      setLoading(true);
+                  getWardrobeItems().then((data) => {
+                      setWardrobeItems(data?.items);
+                      setLoading(false);
+                  }).catch((error) => {
+                      message.error('Something went wrong');
+                      setLoading(false);
+                  })
+    }
+
     useEffect(() => {
         setLoading(true);
         getWardrobeItems().then((data) => {
@@ -126,14 +137,17 @@ export const Wardrobe = () => {
             <Drawer
                 title="Add New Wardrobe Item"
                 placement="right"
-                onClose={() => {setOpen(false); window.location.reload();}}
+                onClose={() => {setOpen(false);
+                  loadItems();
+          
+                }}
                 open={open}
                 width={'100%'}
             >
                 <UploadOutfitForm />
             </Drawer>
             {wardrobeItems ? 
-            <WardrobeComponent loading={loading} list={wardrobeItems}></WardrobeComponent> : 
+            <WardrobeComponent loadItems={loadItems} loading={loading} list={wardrobeItems}></WardrobeComponent> : 
             <>
               <Alert style={{textAlign: 'left'}} message="Wardrobe is empty, kindly add items to your wardrobe!" type="warning" />
               <br/>

@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import './LandingPage.css'; // Import your CSS file
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, provider } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-import { GoogleOutlined } from '@ant-design/icons';
-import { Tag } from 'antd';
+import { GoogleOutlined, Loading3QuartersOutlined } from '@ant-design/icons';
+import { Spin, Tag } from 'antd';
 import { Wardrobe } from './Wardrobe';
 import { OutfitAdvice } from './OutfitAdvice';
 import { Additions } from './Additions';
 import Navbar from '../components/NavigationBar';
+import { Settings } from './Settings';
 
 
 function LandingPage() {
 const navigate = useNavigate();
 const [currentView, setCurrentView] = React.useState('home');
+const [signingIn, setSigningIn] = useState(false);
 
 const onChange  = (key) => {
   console.log(key);
@@ -47,6 +49,7 @@ const onChange  = (key) => {
           localStorage.removeItem('user');
           navigate('/');
         } else {
+          setSigningIn(true);
             signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -69,6 +72,7 @@ const onChange  = (key) => {
                 const email = error.customData.email;
                 // The AuthCredential type that was used.
                 const credential = GoogleAuthProvider.credentialFromError(error);
+                setSigningIn(false);
                 // ...
             });
         }
@@ -84,7 +88,7 @@ const onChange  = (key) => {
       <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px', fontWeight: 'bold'}}>
         {
             localStorage.getItem('user') ? <span style={{fontSize: '18px'}}><br/>Hi, {JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]} &nbsp; <br/>
-            <br/></span> : <span style={{fontSize: '18px'}}><br/><GoogleOutlined /> Sign In  &nbsp; <br/>
+            <br/></span> : <span style={{fontSize: '18px'}}><br/><GoogleOutlined /> &nbsp;{signingIn ? <Spin indicator={<Loading3QuartersOutlined spin style={{color: 'white', fontSize: '20px'}} />} size='small' /> : 'Sign in' } &nbsp; <br/>
             <br/></span>
         }
         
@@ -109,6 +113,8 @@ const onChange  = (key) => {
     currentView === 'outfitadvice' ? <OutfitAdvice />
     :
     currentView === 'additions' ? <Additions />
+    :
+    currentView === 'settings' ? <Settings />
     :
     null}
     </>
