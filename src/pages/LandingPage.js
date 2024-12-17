@@ -11,11 +11,12 @@ import { Additions } from './Additions';
 import Navbar from '../components/NavigationBar';
 import { Settings } from './Settings';
 import { logo } from '../assets';
+import DemoSection from '../components/DemoSection';
 
 
 function LandingPage() {
 const navigate = useNavigate();
-const [currentView, setCurrentView] = React.useState('home');
+const [currentView, setCurrentView] = React.useState(`${localStorage.getItem('user') ? 'wardrobe' : 'home'}`);
 const [signingIn, setSigningIn] = useState(false);
 
 const onChange  = (key) => {
@@ -29,7 +30,7 @@ const onChange  = (key) => {
     <><div style={{
         height: '100vh',
         width: '100%',
-        backgroundImage: 'url("https://images.pexels.com/photos/3315286/pexels-photo-3315286.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
+        backgroundImage: 'url("https://im ages.pexels.com/photos/29808412/pexels-photo-29808412/free-photo-of-cozy-candlelit-scene-with-rose-and-cat-art.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     }}>
@@ -47,7 +48,7 @@ const onChange  = (key) => {
       <br/>
       </div> */}
       {/* Signup button */}
-      <div style={{padding: '0px 20px'}} align="right" onClick={()=>{
+      <div style={{padding: '0px 20px'}} align="left" onClick={()=>{
         if(localStorage.getItem('user')) {
           localStorage.removeItem('user');
           navigate('/');
@@ -88,16 +89,23 @@ const onChange  = (key) => {
       </div> 
       <br/></> } */}
      
-      <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px', fontWeight: 'bold'}}>
+      <a style={{   padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px', fontWeight: ''}}>
         {
-            localStorage.getItem('user') ? <span style={{fontSize: '18px'}}><br/>Hi, {JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]} &nbsp; <br/>
-            <br/></span> : <span style={{fontSize: '18px'}}><br/><GoogleOutlined /> &nbsp;{signingIn ? <Spin indicator={<Loading3QuartersOutlined spin style={{color: 'white', fontSize: '20px'}} />} size='small' /> : 'Sign in' } &nbsp; <br/>
+            localStorage.getItem('user') ? <span style={{fontSize: '18px'}}>Hi, {JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]} &nbsp; <br/>
+            <br/></span> : <span style={{fontSize: '18px'}}> <GoogleOutlined /> &nbsp;{signingIn ? <Spin indicator={<Loading3QuartersOutlined spin style={{color: 'white', fontSize: '20px'}} />} size='small' /> : 'Sign in' } &nbsp; <br/>
             <br/></span>
         }
         
       </a> 
       </div>
-      <div align="right" style={{paddingRight: '20px'}}>
+      <div>
+        <DemoSection />
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      {/* <div align="right" style={{paddingRight: '20px'}}>
         <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
           App Demo
         </a> 
@@ -107,7 +115,7 @@ const onChange  = (key) => {
         <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
             Fashion Blog 
         </a>
-      </div>
+      </div> */}
     </div>
     </>
     :
