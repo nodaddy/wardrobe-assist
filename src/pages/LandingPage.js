@@ -92,7 +92,7 @@ const onChange  = (key) => {
       <a style={{   padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px', fontWeight: ''}}>
         {
             localStorage.getItem('user') ? <span style={{fontSize: '18px'}}>Hi, {JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]} &nbsp; <br/>
-            <br/></span> : <span style={{fontSize: '18px'}}> <GoogleOutlined /> &nbsp;{signingIn ? <Spin indicator={<Loading3QuartersOutlined spin style={{color: 'black', fontSize: '20px'}} />} size='small' /> : 'Sign in' } &nbsp; <br/>
+            <br/></span> : <span style={{fontSize: '18px'}}> <GoogleOutlined /> &nbsp;{signingIn ? <Spin indicator={<Loading3QuartersOutlined spin style={{color: 'black', fontSize: '18px'}} />} size='small' /> : 'Sign in' } &nbsp; <br/>
             <br/></span>
         }
         
