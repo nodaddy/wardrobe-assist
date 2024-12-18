@@ -18,7 +18,7 @@ const PaymentsPage = () => {
         <br/>
         <Alert style={{fontSize: '18px'}} message={<>😔 You have exhausted your free trial limit of 4 wardrobe items</>} type="warning" />
         
-      <h2 style={styles.heading}>🔥 Limited-Time Offer 🔥</h2>
+      <h2 style={styles.heading}> Limited-Time Offer </h2>
       <p style={styles.subheading}>
         Unlock the ultimate wardrobe assistant and transform your style!
       </p>
