@@ -12,6 +12,7 @@ import { getUserProfile } from './services/profileService';
 import UserDetailsForm from './components/UserDetailsForm';
 import { AppstoreAddOutlined, MobileOutlined } from '@ant-design/icons';
 import LocationPrompt from './components/Location';
+import { RazorpayButton } from './components/RazorPayButtons';
 
 function App() {
   const [userProfile, setUserProfile] = useState({});

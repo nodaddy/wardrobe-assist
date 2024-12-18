@@ -50,9 +50,9 @@ function Navbar({onChange, currentView}) {
     onClick={() => {
       onChange('outfitadvice');
     }}
-    href="/outfitadvice" className="navbar-link">
-      <MessageOutlined style={{ color: 'grey', fontSize: '18px'}} />
-      <span style={{ color: 'grey',  fontSize: '10px', marginTop: '5px'  }}>Assistant</span>
+    href="/outfitadvice" style={{color: currentView === 'outfitadvice' ? '#946d4c' : 'grey'}} className="navbar-link">
+      <MessageOutlined style={{ fontSize: '18px'}} />
+      <span style={{  fontSize: '10px', marginTop: '5px'  }}>Assistant</span>
     </span>
   </div>
   <div className="navbar-item">
@@ -60,17 +60,17 @@ function Navbar({onChange, currentView}) {
     onClick={() => {
       onChange('additions');
     }}
-    href="/additions" className="navbar-link">
-      <ShopOutlined style={{ color: 'grey', fontSize: '18px'}} />
-      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px'  }}>Shop assist</span>
+    href="/additions" style={{color: currentView === 'additions' ? '#946d4c' : 'grey'}} className="navbar-link">
+      <ShopOutlined style={{ fontSize: '18px'}} />
+      <span style={{ fontSize: '10px', marginTop: '5px'  }}>Shop assist</span>
     </span>
   </div>
     <div className="navbar-item">
     <span onClick={() => {
       onChange('settings');
-    }} href="/settings" className="navbar-link">
-      <SettingOutlined style={{ color: 'grey', fontSize: '18px'}}/>
-      <span style={{ color: 'grey', fontSize: '10px', marginTop: '5px'  }}>Settings</span>
+    }} href="/settings" style={{color: currentView === 'settings' ? '#946d4c' : 'grey'}} className="navbar-link">
+      <SettingOutlined style={{ fontSize: '18px'}}/>
+      <span style={{ fontSize: '10px', marginTop: '5px'  }}>Settings</span>
     </span>
   </div> 
 </nav>

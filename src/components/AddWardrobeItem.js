@@ -3,6 +3,7 @@ import { Form, Input, Select, Button, Upload, message, Spin, notification } from
 import { FileAddOutlined, PlusOutlined } from '@ant-design/icons';
 import { createOrUpdateWardrobeItem, createWardrobeItem, updateWardrobeItem } from '../services/wardrobeItems';
 import { uploadImageToFirebase } from '../services/storageService';
+import PaymentsPage from './Payment';
 
 const { Option } = Select;
 
@@ -14,6 +15,7 @@ const UploadOutfitForm = () => {
   const [savingData, setSavingData] = useState(false);
 
   const onFinish = (values) => {
+
     console.log('Received values of form:', values);
     if(imageUrl) {
       values.imageUrl = imageUrl;
@@ -33,7 +35,11 @@ const UploadOutfitForm = () => {
   };
 
   return (
-    <Form
+    <>
+    {true ?
+    <><br/><br/><br/><PaymentsPage /></>
+    :
+        <Form
       form={form}
       labelCol={{ span: 4 }}
       wrapperCol={{ span: 14 }}
@@ -140,7 +146,8 @@ const UploadOutfitForm = () => {
           {savingData ? <Spin size="small" /> : 'Submit'}
         </button>
       </Form.Item>
-    </Form>
+    </Form>}
+    </>
   );
 };
 
