@@ -69,7 +69,7 @@ const UserDetailsForm = () => {
         </Form.Item>
 
         {/* Skin Tone Field */}
-        <Form.Item
+        {/* <Form.Item
           label="Skin Tone"
           name="skinTone"
           rules={[{ required: true, message: "Please select your skin tone!" }]}
@@ -79,7 +79,7 @@ const UserDetailsForm = () => {
             <Option value="medium">Medium</Option>
             <Option value="light">Light</Option>
           </Select>
-        </Form.Item>
+        </Form.Item> */}
 
         {/* Height Field */}
         <Form.Item
