@@ -37,14 +37,12 @@ const onChange  = (key) => {
      
       <div style={{backgroundColor: '#946d4c', padding: '5px 0px'}} align="left">
       {/* <img src={logo} style={{width:'150px', marginLeft: '30px', marginTop: '30px'}} /> */}
-      <div style={{marginLeft: '30px'}}>
-        <br/>
+      <div style={{color: '#3C9CA0', backgroundColor: 'white', paddingLeft: '30px'}}>
         <h1 style={{marginBottom: '0px'}}>Drobe</h1>
         <sup>Wardrobe & Fashion Assist</sup>
       </div>
-      <h3 style={{color: ' white', fontSize: '45px', padding: '0px 30px', marginBottom: '10px', fontWeight: '600'}} align="left">Unlock Your Fashion Potential</h3>
+      <h3 style={{color: ' white', padding: '0px 30px', marginBottom: '10px', fontWeight: '600'}} align="left">Unlock Your Fashion Potential</h3>
       <h3 style={{color: ' whitesmoke', padding: '0px 30px', marginTop: '0px', fontWeight: '400'}} align="left">Discover endless outfit possibilities and fashion advices, end indecisiveness with just a few taps.</h3>
-      <br/>
       </div>
       <br/> 
       {/* <div style={{backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px 0px', display: 'inline'}}>

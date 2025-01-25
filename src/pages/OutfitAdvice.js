@@ -58,7 +58,7 @@ export const OutfitAdvice = () => {
     // Function to speak the response
     const speakResponse = (responseText) => {
         const utterance = new SpeechSynthesisUtterance(responseText);
-        utterance.pitch = 1.5;  // Set pitch (optional)
+        utterance.pitch = 1.2;  // Set pitch (optional)
         utterance.rate = 1;   // Set speech rate (optional)
         window.speechSynthesis.speak(utterance);
     };
