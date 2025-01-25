@@ -36,7 +36,7 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
           randomX = Math.random() * (containerWidth - 110);
           randomY = Math.random() * (containerHeight - 400);
           // randomSize = Math.random() * 50 + 50;
-          randomSize = 90;
+          randomSize = 70;
           attempts++;
         } while (
           Array.from(container.children).some((el) =>
