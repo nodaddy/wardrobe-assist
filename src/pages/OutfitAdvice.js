@@ -1,117 +1,189 @@
-import { Input } from "antd";
-import { Banner } from "../components/Banner"
+import { Banner } from "../components/Banner";
 import { useState } from "react";
-import { EyeFilled, FileImageOutlined, MessageOutlined, RightCircleOutlined, RightOutlined, StarFilled, StarOutlined } from "@ant-design/icons";
+import { EyeFilled, MessageOutlined } from "@ant-design/icons";
 import { fetchChatCompletion } from "../OpenAI";
 import { getWardrobeItems } from "../services/wardrobeItems";
 import { Loader } from "../components/Loader";
 import OutfitPromptExamples from "../components/OutfitPromptsForAI";
 import { assist } from "../assets";
+import { useSpeechRecognition } from "react-speech-kit"; // Speech recognition library
 
 export const OutfitAdvice = () => {
-    const [query, setQuery] = useState('');
-    const [response, setResponse] = useState('');
+    const [query, setQuery] = useState("");
+    const [response, setResponse] = useState("");
     const [loadingResponse, setLoadingResponse] = useState(false);
-
-    const handleChange = (e) => {
-        setQuery(e.target.value);
-        };
+    const { listen, stop, supported } = useSpeechRecognition({
+        onResult: (result) => {
+            setQuery(result);
+        },
+    });
 
     const handleSubmit = () => {
         setLoadingResponse(true);
         getWardrobeItems().then((data) => {
-            if(data){
+            if (data) {
                 data.items = data.items.map((item) => {
                     return {
                         wardrobeItemName: item?.name,
                         colourOrDesign: item?.colors,
                         category: item?.category,
-                        type: item?.type
-                    }
-                })
+                        type: item?.type,
+                    };
+                });
             }
-            
-            fetchChatCompletion(query + `Keep the response under 70 words, I have the following things in my inventry: ${JSON.stringify(data)}, ${JSON.stringify(data)} and following are my details: ${localStorage.getItem('userProfile')}`).then((data) => {
-                console.log(data);
-                setResponse(data);
-                setLoadingResponse(false);
-            }).catch((error) => {
-                console.log(error);
-                setLoadingResponse(false);
-            });
-        })
-        };
+
+            fetchChatCompletion(
+                query +
+                    `Keep the response under 70 words, I have the following things in my inventory: ${JSON.stringify(
+                        data
+                    )}, ${JSON.stringify(
+                        data
+                    )} and following are my details: ${localStorage.getItem(
+                        "userProfile"
+                    )}`
+            )
+                .then((data) => {
+                    console.log(data);
+                    setResponse(data);
+                    setLoadingResponse(false);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    setLoadingResponse(false);
+                });
+        });
+    };
 
     return (
-        <div style={{padding: '0px 30px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
-             <Banner icon={<MessageOutlined />} title="Outfit Assistant" />
-             <br/>
-             <br/>
-             <img src={assist} style={{width: '130px'}} />
-             <br/>
-             <br/>
-             <br/>
-             <div align="right"> 
-                
-                <Input.TextArea
-                    placeholder="Type here... (Don't forget to mention the weather) e.g What should I wear to the party tonight? I'm torn between a white t-shirt and a blue t-shirt. Should I pair them with jeans or formal pants, it is a hot evening"
+        <div
+            style={{
+                padding: "0px 30px",
+                height: "calc(100vh - 78px)",
+                overflowY: "auto",
+                overflowX: "hidden",
+            }}
+        >
+            <Banner icon={<MessageOutlined />} title="Outfit Assistant" />
+            <br />
+            <br />
+            <img src={assist} style={{ width: "130px" }} />
+            <br />
+            <br />
+            <br />
+            <div align="right">
+                <textarea
+                    placeholder="Ask the assistant eg. What should I wear to the party tonight? the weather is cold and we might go out in the midnight"
                     value={query}
-                    autoSize={{ minRows: 3}}
-                    onChange={handleChange}
-                    onPressEnter={handleSubmit}
-                    style={{borderRadius: '10px 10px 0px 0px'}}
-                /> 
-                <div
-                align="left"
-                style={{
-                    color: 'white',
-                    background: '#946d4c',
-                    padding: '10px',
-                    borderRadius: '0px 0px 10px 10px',
-                    fontSize: '12px'
-                }}>
-                    <EyeFilled style={{color: 'white'}} /> Make sure you have added items to you wardrobe, the assistant works better that way
-                </div> 
-                <br/> 
-                <button
-                style={{
-                    background: '#3C9CA0',
-                    color: 'white',
-                    padding: '10px 20px',
-                    borderRadius: '5px',
-                    border: '0px',
-                    fontSize: '15px'
-                }}
-                onClick={handleSubmit}
-                >Submit</button>
-             </div> 
-            { 
-                    <div align="left">
-                        { loadingResponse ? <div align="center"><Loader /></div> : response ? <><p
-                            style={{padding: '10px', background: '#3C9CA0', color: 'white', borderRadius: '10px'}}
-                        >{response}</p>
-                       
-                        {/* <button style={{
-                            background: '#946d4c',
-                            color: 'white',
-                            padding: '8px 10px',
-                            borderRadius: '5px',
-                            border: '0px'
-                        }}
-                        onClick={() => {
-                           
-                        }}
-                        ><FileImageOutlined /> See images for these suggestions</button> */}
-
-                        </> : ''}
-                    </div>
-            } 
-            {/* {!response && <OutfitPromptExamples />} */}
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+                    rows={3}
+                    onChange={(e) => setQuery(e.target.value)}
+                    style={{ borderRadius: "10px 10px 0px 0px", width: "100%", border: '0px' }}
+                />
+                {/* <div
+                    align="left"
+                    style={{
+                        color: "white",
+                        background: "#946d4c",
+                        padding: "10px",
+                        borderRadius: "0px 0px 10px 10px",
+                        fontSize: "12px",
+                    }}
+                >
+                    <EyeFilled style={{ color: "white" }} /> Make sure you have added
+                    items to your wardrobe; the assistant works better that way.
+                </div> */}
+                <br />
+                {supported ? (
+                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                    <span style={{marginRight: '15px'}}>Press and <br/> hold to speak</span>
+                    <button
+                    style={{
+                        background: "linear-gradient(145deg, #3da9a8, #317e7e)", // Gradient effect for modern look
+                        color: "white",
+                        width: "60px",
+                        height: "60px",
+                        borderRadius: "50%",
+                        border: "none",
+                        fontSize: "20px", // Slightly larger font for the icon
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)", // Adds a subtle shadow
+                        cursor: "pointer",
+                        transition: "transform 0.2s, box-shadow 0.2s", // Smooth hover effect
+                    }}
+                    onMouseDown={() => listen()}
+                    onMouseUp={() => {
+                        stop();
+                        setTimeout(() => {
+                            handleSubmit();
+                        }, 500)
+                    }}
+                    onMouseOver={(e) => {
+                        e.target.style.transform = "scale(1.1)";
+                        e.target.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.4)";
+                    }}
+                    onMouseOut={(e) => {
+                        e.target.style.transform = "scale(1)";
+                        e.target.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+                    }}
+                >
+                       <span
+                            style={{
+                                width: "15px",
+                                height: "15px",
+                                backgroundColor: "white",
+                                borderRadius: "50%",
+                            }}
+                        ></span>
+                </button>
+                </div>
+                ) : (
+                    <p>Speech recognition is not supported in this browser.</p>
+                )}
+                {/* <button
+                    style={{
+                        background: "#3C9CA0",
+                        color: "white",
+                        padding: "10px 20px",
+                        borderRadius: "5px",
+                        border: "0px",
+                        fontSize: "15px",
+                        marginLeft: "10px",
+                    }}
+                    onClick={handleSubmit}
+                >
+                    Submit
+                </button> */}
+            </div>
+            {
+                <div align="left">
+                    {loadingResponse ? (
+                        <div align="center">
+                            <Loader />
+                        </div>
+                    ) : response ? (
+                        <>
+                            <p
+                                style={{
+                                    padding: "10px",
+                                    background: "#3C9CA0",
+                                    color: "white",
+                                    borderRadius: "10px",
+                                }}
+                            >
+                                {response}
+                            </p>
+                        </>
+                    ) : (
+                        ""
+                    )}
+                </div>
+            }
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
-    )
-}
+    );
+};

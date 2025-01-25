@@ -35,7 +35,8 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
         do {
           randomX = Math.random() * (containerWidth - 110);
           randomY = Math.random() * (containerHeight - 400);
-          randomSize = Math.random() * 50 + 50;
+          // randomSize = Math.random() * 50 + 50;
+          randomSize = 90;
           attempts++;
         } while (
           Array.from(container.children).some((el) =>
@@ -116,7 +117,7 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
         }}
         onClick={() => setSelectedItem(item)}
         id={`item-${index}`} className="carousel-item">
-          <img src={item.imageUrl} style={{borderRadius: '10px'}} alt={item.name} />
+          <img src={item.imageUrl} style={{borderRadius: '10px', backgroundColor: 'silver'}} alt={item.name} />
           {/* <p>{item.name}</p> */}
         </div>
       ))}
@@ -125,7 +126,7 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
       }} open={selectedItem}>
         {selectedItem && (
        <div align="center" style={{
-        fontFamily: "'Playfair Display', serif", // Elegant, luxurious font
+        fontFamily: "Playfair Display', serif", // Elegant, luxurious font
         textAlign: 'center',
         padding: '20px',
         backgroundColor: '#f8f8f8', // Light, neutral background for luxury vibe

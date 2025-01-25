@@ -36,7 +36,7 @@ const UploadOutfitForm = () => {
 
   return (
     <>
-    {true ?
+    {false ?
     <><br/><br/><br/><PaymentsPage /></>
     :
         <Form
