@@ -93,53 +93,62 @@ export const OutfitAdvice = () => {
                 </div> */}
                 <br />
                 {supported ? (
-                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
-                    <span style={{marginRight: '15px'}}>Press and <br/> hold to speak</span>
-                    <button
-                    style={{
-                        background: "linear-gradient(145deg, #3da9a8, #317e7e)", // Gradient effect for modern look
-                        color: "white",
-                        width: "60px",
-                        height: "60px",
-                        borderRadius: "50%",
-                        border: "none",
-                        fontSize: "20px", // Slightly larger font for the icon
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)", // Adds a subtle shadow
-                        cursor: "pointer",
-                        transition: "transform 0.2s, box-shadow 0.2s", // Smooth hover effect
-                    }}
-                    onMouseDown={() => listen()}
-                    onMouseUp={() => {
-                        stop();
-                        setTimeout(() => {
-                            handleSubmit();
-                        }, 500)
-                    }}
-                    onMouseOver={(e) => {
-                        e.target.style.transform = "scale(1.1)";
-                        e.target.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.4)";
-                    }}
-                    onMouseOut={(e) => {
-                        e.target.style.transform = "scale(1)";
-                        e.target.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
-                    }}
-                >
-                       <span
-                            style={{
-                                width: "15px",
-                                height: "15px",
-                                backgroundColor: "white",
-                                borderRadius: "50%",
-                            }}
-                        ></span>
-                </button>
-                </div>
-                ) : (
-                    <p>Speech recognition is not supported in this browser.</p>
-                )}
+    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+        <span style={{ marginRight: '15px', textAlign: "right", fontSize: "14px" }}>
+            Press and <br /> hold to speak
+        </span>
+        <button
+            style={{
+                background: "linear-gradient(145deg, #3da9a8, #317e7e)", // Gradient effect for modern look
+                color: "white",
+                width: "60px",
+                height: "60px",
+                borderRadius: "50%",
+                border: "none",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)", // Adds a subtle shadow
+                cursor: "pointer",
+                transition: "transform 0.2s, box-shadow 0.2s", // Smooth hover effect
+            }}
+            onMouseDown={() => listen()}
+            onMouseUp={() => {
+                stop();
+                setTimeout(() => {
+                    handleSubmit();
+                }, 500);
+            }}
+            onTouchStart={() => listen()} // For mobile touch
+            onTouchEnd={() => {
+                stop();
+                setTimeout(() => {
+                    handleSubmit();
+                }, 500);
+            }} // For mobile touch
+            onMouseOver={(e) => {
+                e.target.style.transform = "scale(1.1)";
+                e.target.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.4)";
+            }}
+            onMouseOut={(e) => {
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+            }}
+        >
+            <span
+                style={{
+                    width: "15px",
+                    height: "15px",
+                    backgroundColor: "white",
+                    borderRadius: "50%",
+                }}
+            ></span>
+        </button>
+    </div>
+) : (
+    <p>Speech recognition is not supported in this browser.</p>
+)}
+
                 {/* <button
                     style={{
                         background: "#3C9CA0",
