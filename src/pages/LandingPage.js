@@ -120,7 +120,6 @@ function LandingPage() {
           <div style={{ textAlign: 'center' }}>
             {/* <img src={logo} alt="Logo" style={{ width: '150px', marginBottom: '-10px' }} /> */}
             <br/>
-            <br/>
             <h1 style={{ fontSize: '2.2rem', fontWeight: '500' }}>Unlock Your Fashion Potential</h1>
             <p style={{ fontSize: '1.2rem', marginTop: '10px', lineHeight: '1.5' }}>
               Discover endless outfit possibilities and fashion advice.
@@ -131,9 +130,9 @@ function LandingPage() {
                 style={{
                   background: '#ffffff',
                   color: '#fb9a7a',
-                  padding: '12px 25px',
+                  padding: '10px 25px',
                   border: 'none',
-                  borderRadius: '25px',
+                  borderRadius: '10px',
                   fontSize: '1rem',
                   fontWeight: 'bold',
                   cursor: 'pointer',
@@ -193,7 +192,7 @@ function LandingPage() {
             textAlign: 'center',
             boxShadow: '0 -4px 10px rgba(0, 0, 0, 0.1)',
           }}>
-             {/* <div style={{background: 'white', color: 'red'}}>
+             <div style={{background: 'white', color: 'red'}}>
             <br/>
             <br/>
             <br/>
@@ -206,7 +205,7 @@ function LandingPage() {
             <br/>
             <br/>
             <br/>
-          </div> */}
+          </div>
             <h2 align="left" style={{ color: 'grey', fontSize: '1.3rem', fontWeight: '500', borderBottom: '1px solid silver', padding: '10px 0px' }}>What Our Users Say</h2>
             <div style={{
               display: 'flex',
