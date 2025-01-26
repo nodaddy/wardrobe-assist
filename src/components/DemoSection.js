@@ -45,6 +45,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    paddingBottom: "80px",
   },
   card: {
     maxWidth: "400px",

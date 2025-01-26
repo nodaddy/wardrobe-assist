@@ -40,7 +40,7 @@ function LandingPage() {
           <div style={{ textAlign: 'center' }}>
             <br/>
             <img src={logo} alt="Logo" style={{ width: '150px', marginBottom: '-10px' }} />
-            <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>Unlock Your Fashion Potential</h1>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: '500' }}>Unlock Your Fashion Potential</h1>
             <p style={{ fontSize: '1.2rem', marginTop: '10px', lineHeight: '1.5' }}>
               Discover endless outfit possibilities and fashion advice.
               <br /> End indecisiveness with just a few taps.
@@ -164,15 +164,6 @@ function LandingPage() {
       ) : currentView === 'settings' ? (
         <Settings />
       ) : null}
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
     </>
   );
 }
