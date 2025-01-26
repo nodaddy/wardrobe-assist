@@ -34,6 +34,7 @@ function LandingPage() {
             alignItems: 'center',
             justifyContent: 'center',
             color: '#fff',
+            paddingTop: '100px',
             fontFamily: 'Poppins, sans-serif',
           }}
         >
@@ -41,6 +42,8 @@ function LandingPage() {
           <div
         style={{
           backgroundColor: 'white',
+          position: 'fixed',
+          top: '0',
           color: '#fff',
           width: '100vw',
           display: 'flex',
