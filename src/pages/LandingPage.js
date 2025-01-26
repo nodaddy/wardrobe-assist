@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-// import './LandingPage.css'; // Import your CSS file
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, provider } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOutlined, Loading3QuartersOutlined } from '@ant-design/icons';
-import { Spin, Tag } from 'antd';
+import { Spin } from 'antd';
 import { Wardrobe } from './Wardrobe';
 import { OutfitAdvice } from './OutfitAdvice';
 import { Additions } from './Additions';
@@ -13,124 +12,167 @@ import { Settings } from './Settings';
 import { logo } from '../assets';
 import DemoSection from '../components/DemoSection';
 
-
 function LandingPage() {
-const navigate = useNavigate();
-const [currentView, setCurrentView] = React.useState(`${localStorage.getItem('user') ? 'wardrobe' : 'home'}`);
-const [signingIn, setSigningIn] = useState(false);
+  const navigate = useNavigate();
+  const [currentView, setCurrentView] = React.useState(`${localStorage.getItem('user') ? 'wardrobe' : 'home'}`);
+  const [signingIn, setSigningIn] = useState(false);
 
-const onChange  = (key) => {
-  console.log(key);
-  setCurrentView(key);
-};
+  const onChange = (key) => {
+    console.log(key);
+    setCurrentView(key);
+  };
 
-  return (<>
-    { localStorage.getItem('user') && <Navbar currentView={currentView} onChange={onChange} /> }
-    {currentView === 'home' ?
-    <><div style={{
-        height: '100vh',
-        width: '100%',
-        backgroundImage: 'url("https://im ages.pexels.com/photos/29808412/pexels-photo-29808412/free-photo-of-cozy-candlelit-scene-with-rose-and-cat-art.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-    }}>
-     
-      <div style={{backgroundColor: '', padding: '5px 0px'}} align="left">
-      <img src={logo} style={{width:'190px', marginLeft: '5px', marginTop: '10px'}} /> 
-      {/* <div style={{color: '#3C9CA0', backgroundColor: 'white', paddingLeft: '30px'}}>
-        <h1 style={{marginBottom: '0px'}}>Drobe</h1>
-        <sup>Wardrobe & Fashion Assist</sup>
-      </div> */}
-      <h3 style={{color: ' #946d4c', padding: '0px 30px', marginBottom: '10px', fontWeight: '600'}} align="left">Unlock Your Fashion Potential</h3>
-      <h3 style={{color: ' #946d4c', padding: '0px 30px', marginTop: '0px', fontWeight: '400'}} align="left">Discover endless outfit possibilities and fashion advices, end indecisiveness with just a few taps.</h3>
-      </div>
-      <br/> 
-      {/* <div style={{backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px 0px', display: 'inline'}}>
-     
-      <h1 style={{color: 'blue', padding: '0px 30px', marginTop: '0px', display: 'inline'}} align="left">Hi, Neelesh</h1>
+  return (
+    <>
+      {localStorage.getItem('user') && <Navbar currentView={currentView} onChange={onChange} />}
+      {currentView === 'home' ? (
+        <div
+          style={{
+            backgroundImage: 'linear-gradient(to bottom, #fb9a7a, #f78c6b)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#fff',
+            fontFamily: 'Poppins, sans-serif',
+          }}
+        >
+          <div style={{ textAlign: 'center' }}>
+            <br/>
+            <img src={logo} alt="Logo" style={{ width: '150px', marginBottom: '-10px' }} />
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>Unlock Your Fashion Potential</h1>
+            <p style={{ fontSize: '1.2rem', marginTop: '10px', lineHeight: '1.5' }}>
+              Discover endless outfit possibilities and fashion advice.
+              <br /> End indecisiveness with just a few taps.
+            </p>
+            <div style={{ marginTop: '30px' }}>
+              <button
+                style={{
+                  background: '#ffffff',
+                  color: '#fb9a7a',
+                  padding: '12px 25px',
+                  border: 'none',
+                  borderRadius: '25px',
+                  fontSize: '1rem',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.2s',
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.transform = 'scale(1.05)';
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.transform = 'scale(1)';
+                }}
+                onClick={() => {
+                  if (localStorage.getItem('user')) {
+                    localStorage.removeItem('user');
+                    navigate('/');
+                  } else {
+                    setSigningIn(true);
+                    signInWithPopup(auth, provider)
+                      .then((result) => {
+                        const user = result.user;
+                        localStorage.setItem('user', JSON.stringify(user));
+                        console.log(user);
+                        window.location.reload();
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                        setSigningIn(false);
+                      });
+                  }
+                }}
+              >
+                {localStorage.getItem('user') ? (
+                  `Hi, ${JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]}`
+                ) : (
+                  <span>
+                    <GoogleOutlined /> {signingIn ? <Spin indicator={<Loading3QuartersOutlined spin />} /> : 'Sign in with Google'}
+                  </span>
+                )}
+              </button>
+              <br/> 
+            </div>
+          </div>
+          
+          <div style={{
+            marginTop: '50px',
+            backgroundColor: '#fff',
+            padding: '40px 20px',
+            borderRadius: '15px 15px 0 0',
+            textAlign: 'center',
+            boxShadow: '0 -4px 10px rgba(0, 0, 0, 0.1)',
+          }}>
+            <h2 style={{ color: '#fb9a7a', fontSize: '1.7rem', fontWeight: '500' }}>What Our Users Say</h2>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              marginTop: '30px',
+              flexWrap: 'wrap',
+            }}>
+              <div style={{
+                maxWidth: '300px',
+                margin: '10px',
+                padding: '20px',
+                backgroundColor: '#fef4f2',
+                borderRadius: '15px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              }}>
+                <p style={{ fontStyle: 'italic', color: '#555' }}>
+                  "This app has completely transformed my wardrobe. I never run out of ideas for outfits anymore!"
+                </p>
+                <h4 style={{ color: '#fb9a7a', marginTop: '10px' }}>- Sarah L.</h4>
+              </div>
+              <div style={{
+                maxWidth: '300px',
+                margin: '10px',
+                padding: '20px',
+                backgroundColor: '#fef4f2',
+                borderRadius: '15px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              }}>
+                <p style={{ fontStyle: 'italic', color: '#555' }}>
+                  "Amazing tool! It helped me decide what to wear for my big presentation. Highly recommend."
+                </p>
+                <h4 style={{ color: '#fb9a7a', marginTop: '10px' }}>- James P.</h4>
+              </div>
+              <div style={{
+                maxWidth: '300px',
+                margin: '10px',
+                padding: '20px',
+                backgroundColor: '#fef4f2',
+                borderRadius: '15px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              }}>
+                <p style={{ fontStyle: 'italic', color: '#555' }}>
+                  "Drobe is my go-to app for fashion advice. The suggestions are always on point!"
+                </p>
+                <h4 style={{ color: '#fb9a7a', marginTop: '10px' }}>- Emily R.</h4>
+              </div>
+            </div>
+          </div>
+          <DemoSection />
+        </div>
+      ) : currentView === 'wardrobe' ? (
+        <Wardrobe />
+      ) : currentView === 'outfitadvice' ? (
+        <OutfitAdvice />
+      ) : currentView === 'additions' ? (
+        <Additions />
+      ) : currentView === 'settings' ? (
+        <Settings />
+      ) : null}
       <br/>
-      </div> */}
-      {/* Signup button */}
-      <div style={{padding: '0px 20px'}} align="left" onClick={()=>{
-        if(localStorage.getItem('user')) {
-          localStorage.removeItem('user');
-          navigate('/');
-        } else {
-          setSigningIn(true);
-            signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                localStorage.setItem('user', JSON.stringify(user));
-                console.log(user);
-                // navigate to /wardrobe
-                // navigate('/wardrobe');
-                window.location.reload();
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                setSigningIn(false);
-                // ...
-            });
-        }
-      }}>
-      {/* {localStorage.getItem('user') && <><div align="left" style={{backgroundColor: ' #946d4c', color: '#fff', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none', fontSize: '20px'}}>
-        {
-             `Hi, ${JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]}`
-        }
-        
-      </div> 
-      <br/></> } */}
-     
-      <a style={{   padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '15px', fontWeight: ''}}>
-        {
-            localStorage.getItem('user') ? <span style={{fontSize: '18px'}}>Hi, {JSON.parse(localStorage.getItem('user')).displayName.split(' ')[0]} &nbsp; <br/>
-            <br/></span> : <span style={{fontSize: '18px'}}> <GoogleOutlined /> &nbsp;{signingIn ? <Spin indicator={<Loading3QuartersOutlined spin style={{color: 'black', fontSize: '18px'}} />} size='small' /> : 'Sign in' } &nbsp; <br/>
-            <br/></span>
-        }
-        
-      </a> 
-      </div>
-      <div>
-        <DemoSection />
-      </div>
       <br/>
       <br/>
       <br/>
       <br/>
-      {/* <div align="right" style={{paddingRight: '20px'}}>
-        <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
-          App Demo
-        </a> 
-        <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
-          Trending Looks
-        </a> 
-        <a style={{ color: '#fff', padding: '5px 10px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px'}}>
-            Fashion Blog 
-        </a>
-      </div> */}
-    </div>
-    </>
-    :
-    currentView === 'wardrobe' ? <Wardrobe /> 
-    :
-    currentView === 'outfitadvice' ? <OutfitAdvice />
-    :
-    currentView === 'additions' ? <Additions />
-    :
-    currentView === 'settings' ? <Settings />
-    :
-    null}
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </>
   );
 }

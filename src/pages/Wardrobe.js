@@ -109,8 +109,8 @@ export const Wardrobe = () => {
                 type="primary"
                 style={{
                   position: 'fixed',            // Fix the position relative to the viewport
-                  bottom: `${wardrobeItems?.length > 0 ? '110px' : '110px'}`,            // Distance from the bottom of the screen
-                  right: `${wardrobeItems?.length > 0 ? '43px' : '43px'}`,                // Distance from the right of the screen
+                  bottom: `${wardrobeItems?.length > 0 ? '95px' : '95px'}`,            // Distance from the bottom of the screen
+                  right: `${wardrobeItems?.length > 0 ? '44px' : '44px'}`,                // Distance from the right of the screen
                   cursor: 'pointer',            // Pointer cursor for hover effect
                   fontSize: '14px',             // Font size
                   color: 'white',               // Text color

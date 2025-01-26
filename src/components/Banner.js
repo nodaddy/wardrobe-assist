@@ -1,7 +1,7 @@
 export const Banner = ({title, icon}) => {
     return (
         <div className="banner" style={{
-            background: '#946d4c',
+            background: '#fb9a7a',
             width: '100vw',
             marginLeft: '-30px',
             padding: '5px 0px'

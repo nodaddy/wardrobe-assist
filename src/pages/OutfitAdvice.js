@@ -18,6 +18,8 @@ export const OutfitAdvice = () => {
         },
     });
 
+    const [speakButtonText, setSpeakButtonText] = useState(<>Press and <br/> hold to speak</>);
+
     const handleSubmit = () => {
         setLoadingResponse(true);
         getWardrobeItems().then((data) => {
@@ -75,10 +77,10 @@ export const OutfitAdvice = () => {
             <Banner icon={<MessageOutlined />} title="Outfit Assistant" />
             <br />
             <br />
-            <img src={assist} style={{ width: "130px" }} />
+            {/* <img src={assist} style={{ width: "130px" }} />
             <br />
             <br />
-            <br />
+            <br /> */}
             <div align="right">
                 <textarea
                     placeholder="Ask the assistant eg. What should I wear to the party tonight? the weather is cold and we might go out in the midnight"
@@ -89,9 +91,9 @@ export const OutfitAdvice = () => {
                 />
                 <br />
                 {supported ? (
-                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                    <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" , position: "absolute", bottom: "90px", right: "20px"}}>
                         <span style={{ marginRight: '15px', textAlign: "right", fontSize: "14px" }}>
-                            Press and <br /> hold to speak
+                            {speakButtonText}
                         </span>
                         <button
                             style={{
@@ -115,9 +117,10 @@ export const OutfitAdvice = () => {
                                     handleSubmit();
                                 }, 500);
                             }}
-                            onTouchStart={() => listen()} // For mobile touch
+                            onTouchStart={() => {listen(); setSpeakButtonText("Listening...")}} // For mobile touch
                             onTouchEnd={() => {
                                 stop();
+                                setSpeakButtonText(<>Press and <br/> hold to speak</>)
                                 setTimeout(() => {
                                     handleSubmit();
                                 }, 500);
