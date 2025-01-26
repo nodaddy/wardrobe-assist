@@ -192,7 +192,7 @@ function LandingPage() {
             textAlign: 'center',
             boxShadow: '0 -4px 10px rgba(0, 0, 0, 0.1)',
           }}>
-             <div style={{background: 'white', color: 'red'}}>
+             {/* <div style={{background: 'white', color: 'red'}}>
             <br/>
             <br/>
             <br/>
@@ -205,7 +205,7 @@ function LandingPage() {
             <br/>
             <br/>
             <br/>
-          </div>
+          </div> */}
             <h2 align="left" style={{ color: 'grey', fontSize: '1.3rem', fontWeight: '500', borderBottom: '1px solid silver', padding: '10px 0px' }}>What Our Users Say</h2>
             <div style={{
               display: 'flex',
