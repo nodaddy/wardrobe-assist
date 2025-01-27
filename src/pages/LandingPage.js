@@ -226,14 +226,14 @@ function LandingPage() {
             <Alert message="For android users" showIcon icon={<AndroidOutlined />} />
             <p>To install this app on your Android device:</p>
               <ol>
-                <li>Open this page in Chrome and you will see a green button 'Install App' on the bottom left to downlaod the app.</li>
+                <li>Visit <i>https://drobe.space</i> in Chrome and you will see a green button 'Install App' on the bottom left to downlaod the app.</li>
               </ol>
 
             <br/>
             <Alert message="For apple/ios users" showIcon icon={<AppleOutlined />} />
             <p>To install this app on your iPhone or iPad:</p>
             <ol>
-              <li>Open this page in Safari.</li>
+              <li>Visit <i>https://drobe.space</i> in Safari</li>
               <li>Tap the <strong>Share</strong> icon (⬆️) in the browser toolbar.</li>
               <li>Select <strong>Add to Home Screen</strong>.</li>
               <li>Follow the prompts to add the app.</li>
