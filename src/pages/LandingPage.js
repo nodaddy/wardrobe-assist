@@ -45,7 +45,7 @@ function LandingPage() {
         style={{
           backgroundColor: 'white',
           position: 'fixed',
-          top: '0',
+          top: '0px',
           color: '#fff',
           width: '100vw',
           display: 'flex',

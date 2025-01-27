@@ -44,12 +44,12 @@
   font-family: 'Arial', sans-serif; 
   font-weight: 500;
   border: none;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 0px 0px 8px 8px;
-  padding: 3px 14px;
+  padding: 4px 16px;
   cursor: pointer;
-  position: absolute;
-  top: 0px;
+  position: fixed;
+  top: 90px;
   right: 10px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
