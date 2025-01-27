@@ -147,12 +147,12 @@ export const Wardrobe = () => {
                 placement="right"
                 onClose={() => {setOpen(false);
                   loadItems();
-          
                 }}
+                style={{marginTop: '69px'}}
                 open={open}
                 width={'100%'}
             >
-                <UploadOutfitForm />
+                <UploadOutfitForm setOpen={setOpen} loadItems={loadItems} />
             </Drawer>
             {wardrobeItems ? 
             wardrobeItemsFreeStyle ? <WardrobeComponentFreeStyle loadItems={loadItems} loading={loading} list={wardrobeItems} />

@@ -7,7 +7,7 @@ import PaymentsPage from './Payment';
 
 const { Option } = Select;
 
-const UploadOutfitForm = () => {
+const UploadOutfitForm = ({setOpen, loadItems}) => {
   const [form] = Form.useForm();
   const [imageUrl, setImageUrl] = useState(null);
   const [uploadingImage, setUploadingImage] = useState(false);
@@ -23,6 +23,8 @@ const UploadOutfitForm = () => {
       createOrUpdateWardrobeItem(values).then(()=>{
         // resest form fields
         form.resetFields();
+        setOpen(false);
+        loadItems();
         setSavingData(false);
       }).catch((e) => {
         console.log(e);
