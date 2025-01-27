@@ -27,7 +27,7 @@ function LandingPage() {
 
   return (
     <>
-      {localStorage.getItem('user') ? <Navbar currentView={currentView} onChange={onChange} /> : ''}
+      {localStorage.getItem('user') ? <Navbar currentView={currentView} onChange={onChange} /> : <div style={{width: '100vw', height: '66px', backgroundColor: 'whitesmoke', position: 'fixed', bottom: '0px', zIndex: '999'}}></div>}
       {currentView === 'home' ? (
         <div
           style={{
@@ -226,10 +226,7 @@ function LandingPage() {
             <Alert message="For android users" showIcon icon={<AndroidOutlined />} />
             <p>To install this app on your Android device:</p>
               <ol>
-                <li>Open this page in Chrome or your preferred browser.</li>
-                <li>Tap the <strong>Menu</strong> icon (usually three dots) in the top-right corner.</li>
-                <li>Select <strong>Add to Home Screen</strong>.</li>
-                <li>Follow the prompts to add the app to your home screen.</li>
+                <li>Open this page in Chrome and you will see a green button 'Install App' on the bottom left to downlaod the app.</li>
               </ol>
 
             <br/>
