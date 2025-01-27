@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     const handleBeforeInstallPrompt = (event) => {
       // Prevent the browser's default install prompt
-      event.preventDefault();
+      //event.preventDefault();
       // Save the event for triggering later
       setDeferredPrompt(event);
       // Show the install button

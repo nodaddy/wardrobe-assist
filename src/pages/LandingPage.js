@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, provider } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-import { AppstoreAddOutlined, ArrowRightOutlined, DownloadOutlined, EnterOutlined, FacebookOutlined, GoogleOutlined, InstagramOutlined, Loading3QuartersOutlined, XOutlined } from '@ant-design/icons';
-import { Modal, Spin } from 'antd';
+import { AndroidOutlined, AppleOutlined, AppstoreAddOutlined, ArrowRightOutlined, DownloadOutlined, EnterOutlined, FacebookOutlined, GoogleOutlined, InstagramOutlined, Loading3QuartersOutlined, XOutlined } from '@ant-design/icons';
+import { Alert, Modal, Spin } from 'antd';
 import { Wardrobe } from './Wardrobe';
 import { OutfitAdvice } from './OutfitAdvice';
 import { Additions } from './Additions';
@@ -219,12 +219,24 @@ function LandingPage() {
           </>}
           <Modal open={showDownloadModal}
           footer={[]}
+          title="Download App"
           onCancel={() => {
             setShowDownloadModal(false);
           }}> 
             <br/>
+            <Alert message="For android users" showIcon icon={<AndroidOutlined />} />
+            Open this page in chrome, you will see a green button at bottom left of the screen to download the app
             <br/>
-            Open www.neensta.com in chrome, you will see a green button at bottom left of the screen to download the app
+            <br/>
+            <br/>
+            <Alert message="For apple/ios users" showIcon icon={<AppleOutlined />} />
+            <p>To install this app on your iPhone or iPad:</p>
+            <ol>
+              <li>Open this page in Safari.</li>
+              <li>Tap the <strong>Share</strong> icon (⬆️) in the browser toolbar.</li>
+              <li>Select <strong>Add to Home Screen</strong>.</li>
+              <li>Follow the prompts to add the app.</li>
+            </ol>
            
           </Modal>
             <h6 align="left" style={{paddingLeft: '20px', paddingTop: '0px', color: 'grey', fontSize: '1.3rem', fontWeight: '500', border: '0px solid silver' }}>
