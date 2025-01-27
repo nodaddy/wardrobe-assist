@@ -123,7 +123,7 @@ function LandingPage() {
           <div style={{ textAlign: 'center' }}>
             {/* <img src={logo} alt="Logo" style={{ width: '150px', marginBottom: '-10px' }} /> */}
             <br/>
-            <h1 style={{ fontSize: '2.2rem', fontWeight: '500' }}>Unlock Your Wardrobe Potential</h1>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: '500' }}>Personal Stylist for Everyone</h1>
             <p style={{ fontSize: '1.2rem', marginTop: '10px', lineHeight: '1.5' }}>
               Create your digital wardrobe and discover endless outfit possibilities and fashion advices.
             </p>
@@ -131,7 +131,7 @@ function LandingPage() {
              <div style={{ marginTop: '45px' }}>
                <button
                 style={{
-                  background: '#ffffff',
+                  background: 'whitesmoke',
                   color: '#fb9a7a',
                   padding: '10px 25px',
                   border: 'none',
