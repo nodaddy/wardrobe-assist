@@ -45,15 +45,16 @@
   font-weight: 500;
   border: none;
   font-size: 16px;
-  border-radius: 0px;
+  border-radius: 0px 8px 0px 0px;
   padding: 4px 16px;
   cursor: pointer;
   position: fixed;
-  top: 90px;
-  right: 0px;
+  bottom: 70px;
+  left: 0px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
   outline: none;
+  z-index: 99999;
 }
 
 .install-button:hover {
