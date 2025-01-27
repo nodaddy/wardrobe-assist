@@ -26,7 +26,7 @@ function LandingPage() {
 
   return (
     <>
-      {localStorage.getItem('user') && <Navbar currentView={currentView} onChange={onChange} />}
+      {localStorage.getItem('user') ? <Navbar currentView={currentView} onChange={onChange} /> : <div style={{width: '100vw', height: '66px', backgroundColor: 'whitesmoke', position: 'fixed', bottom: '0px', zIndex: '999'}}></div>}
       {currentView === 'home' ? (
         <div
           style={{
