@@ -210,11 +210,13 @@ function LandingPage() {
             <br/>
             <br/>
           </div> */}
-          <br/>
+          {!document.getElementsByClassName('install-button') 
+          && <><br/>
           <br/>
           <span style={{color: 'grey', fontSize: '18px'}} onClick={() => {
             setShowDownloadModal(true);
           }}><DownloadOutlined /> Download App </span>
+          </>}
           <Modal open={showDownloadModal}
           footer={[]}
           onCancel={() => {
