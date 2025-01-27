@@ -27,7 +27,7 @@ function LandingPage() {
 
   return (
     <>
-      {localStorage.getItem('user') ? <Navbar currentView={currentView} onChange={onChange} /> : <div style={{width: '100vw', height: '66px', backgroundColor: 'whitesmoke', position: 'fixed', bottom: '0px', zIndex: '999'}}></div>}
+      {localStorage.getItem('user') ? <Navbar currentView={currentView} onChange={onChange} /> : ''}
       {currentView === 'home' ? (
         <div
           style={{
@@ -210,8 +210,7 @@ function LandingPage() {
             <br/>
             <br/>
           </div> */}
-          {document.getElementsByClassName('install-button').length === 0 
-          && <><br/>
+          {<><br/>
           <br/>
           <span style={{color: 'grey', fontSize: '18px'}} onClick={() => {
             setShowDownloadModal(true);
@@ -225,9 +224,14 @@ function LandingPage() {
           }}> 
             <br/>
             <Alert message="For android users" showIcon icon={<AndroidOutlined />} />
-            Open this page in chrome, you will see a green button at bottom left of the screen to download the app
-            <br/>
-            <br/>
+            <p>To install this app on your Android device:</p>
+              <ol>
+                <li>Open this page in Chrome or your preferred browser.</li>
+                <li>Tap the <strong>Menu</strong> icon (usually three dots) in the top-right corner.</li>
+                <li>Select <strong>Add to Home Screen</strong>.</li>
+                <li>Follow the prompts to add the app to your home screen.</li>
+              </ol>
+
             <br/>
             <Alert message="For apple/ios users" showIcon icon={<AppleOutlined />} />
             <p>To install this app on your iPhone or iPad:</p>
@@ -237,7 +241,7 @@ function LandingPage() {
               <li>Select <strong>Add to Home Screen</strong>.</li>
               <li>Follow the prompts to add the app.</li>
             </ol>
-           
+           <br/>
           </Modal>
             <h6 align="left" style={{paddingLeft: '20px', paddingTop: '0px', color: 'grey', fontSize: '1.3rem', fontWeight: '500', border: '0px solid silver' }}>
               What Our Users Say</h6>

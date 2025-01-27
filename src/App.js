@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     const handleBeforeInstallPrompt = (event) => {
       // Prevent the browser's default install prompt
-      //event.preventDefault();
+      event.preventDefault();
       // Save the event for triggering later
       setDeferredPrompt(event);
       // Show the install button
@@ -70,11 +70,11 @@ function App() {
   return (
     <div className="App">
       {/* <LocationPrompt /> */}
-      {showInstallButton && (
+      {/* {showInstallButton && (
         <button onClick={handleInstallClick} className='install-button'>
          <AppstoreAddOutlined /> Install App
         </button>
-      )}
+      )} */}
       {
         !userProfile && localStorage.getItem('user') && <div style={{
           height: '100vh',
