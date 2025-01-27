@@ -107,10 +107,10 @@ export const Wardrobe = () => {
             <Banner icon={<AppstoreOutlined style={{fontSize: '18px'}} />} title={`${user.displayName.split(' ')[0]}'s Wardrobe`} />
             <br/>
              {/*switch wardrobe view  */}
-             <div align="right" >
+             {wardrobeItems && <div align="right" >
             <button style={{ padding: '10px 15px', background: '#3C9CA0', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px'}} 
-            onClick={() => setWardrobeItemsFreeStyle(!wardrobeItemsFreeStyle)}>Switch view  </button>
-            </div>
+            onClick={() => setWardrobeItemsFreeStyle(!wardrobeItemsFreeStyle)}>Switch view </button>
+            </div>}
             <br/>
             <span
                 type="primary"
