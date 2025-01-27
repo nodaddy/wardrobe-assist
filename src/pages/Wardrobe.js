@@ -10,11 +10,12 @@ import { fetchChatCompletion } from "../OpenAI";
 import { Loader } from "../components/Loader";
 import {WardrobeComponent} from "../components/WardrobeComponent";
 import { emptywar } from "../assets";
+import { WardrobeComponentFreeStyle } from "../components/WardrobeComponentFreeStyle";
 
 export const Wardrobe = () => {
     const [open, setOpen] = useState(false);
     const [wardrobeItems, setWardrobeItems] = useState([]);
-
+    const [wardrobeItemsFreeStyle, setWardrobeItemsFreeStyle] = useState(false);
     const [loading, setLoading] = useState(false);
 
     const loadItems = () => {
@@ -104,7 +105,13 @@ export const Wardrobe = () => {
     return (
         <div align="center" style={{padding: '0px 30px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
             <Banner icon={<AppstoreOutlined style={{fontSize: '18px'}} />} title={`${user.displayName.split(' ')[0]}'s Wardrobe`} />
-            <br/> 
+            <br/>
+             {/*switch wardrobe view  */}
+             <div align="right" >
+            <button style={{ padding: '10px 15px', background: '#3C9CA0', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px'}} 
+            onClick={() => setWardrobeItemsFreeStyle(!wardrobeItemsFreeStyle)}>Switch view  </button>
+            </div>
+            <br/>
             <span
                 type="primary"
                 style={{
@@ -147,6 +154,8 @@ export const Wardrobe = () => {
                 <UploadOutfitForm />
             </Drawer>
             {wardrobeItems ? 
+            wardrobeItemsFreeStyle ? <WardrobeComponentFreeStyle loadItems={loadItems} loading={loading} list={wardrobeItems} />
+            :
             <WardrobeComponent loadItems={loadItems} loading={loading} list={wardrobeItems}></WardrobeComponent> : 
             <>
               <Alert style={{textAlign: 'left'}} message="Wardrobe is empty, kindly add items to your wardrobe!" type="warning" />
