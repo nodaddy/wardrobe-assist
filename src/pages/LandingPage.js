@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, provider } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRightOutlined, EnterOutlined, FacebookOutlined, GoogleOutlined, InstagramOutlined, Loading3QuartersOutlined, XOutlined } from '@ant-design/icons';
-import { Spin } from 'antd';
+import { AppstoreAddOutlined, ArrowRightOutlined, DownloadOutlined, EnterOutlined, FacebookOutlined, GoogleOutlined, InstagramOutlined, Loading3QuartersOutlined, XOutlined } from '@ant-design/icons';
+import { Modal, Spin } from 'antd';
 import { Wardrobe } from './Wardrobe';
 import { OutfitAdvice } from './OutfitAdvice';
 import { Additions } from './Additions';
@@ -18,6 +18,7 @@ function LandingPage() {
   const navigate = useNavigate();
   const [currentView, setCurrentView] = React.useState(`${localStorage.getItem('user') ? 'wardrobe' : 'home'}`);
   const [signingIn, setSigningIn] = useState(false);
+  const [showDownloadModal, setShowDownloadModal] = useState();
 
   const onChange = (key) => {
     console.log(key);
@@ -209,7 +210,23 @@ function LandingPage() {
             <br/>
             <br/>
           </div> */}
-            <h6 align="left" style={{paddingLeft: '20px', paddingTop: '0px', color: 'grey', fontSize: '1.3rem', fontWeight: '500', border: '0px solid silver' }}>What Our Users Say</h6>
+          <br/>
+          <br/>
+          <span style={{color: 'grey', fontSize: '18px'}} onClick={() => {
+            setShowDownloadModal(true);
+          }}><DownloadOutlined /> Download App </span>
+          <Modal open={showDownloadModal}
+          footer={[]}
+          onCancel={() => {
+            setShowDownloadModal(false);
+          }}> 
+            <br/>
+            <br/>
+            Open www.neensta.com in chrome, you will see a green button at bottom left of the screen to download the app
+           
+          </Modal>
+            <h6 align="left" style={{paddingLeft: '20px', paddingTop: '0px', color: 'grey', fontSize: '1.3rem', fontWeight: '500', border: '0px solid silver' }}>
+              What Our Users Say</h6>
             <div style={{
   display: 'flex',
   overflowX: 'auto',
