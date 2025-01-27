@@ -17,14 +17,15 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
   return (
     <div
       style={{
-        backgroundImage: "linear-gradient(to right, #ffecd2, #fcb69f)",
+        // backgroundImage: "linear-gradient(to right, #ffecd2, #fcb69f)",
         minHeight: "100vh",
-        padding: "20px",
+        width: '100vw',
+        marginLeft: '-30px',
         fontFamily: "Arial, sans-serif",
       }}
     >
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
-        <h2 style={{ fontSize: "2.2rem", color: "#333", fontWeight: "500" }}>My Wardrobe</h2>
+        {/* <h2 style={{ fontSize: "2.2rem", color: "#333", fontWeight: "500" }}>My Wardrobe</h2> */}
         <SearchOutlined style={{ fontSize: "1.2rem", color: "#555" }} />
         &nbsp;
         &nbsp;
@@ -34,7 +35,7 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           style={{
-            width: "50%",
+            width: "68%",
             padding: "10px 15px",
             marginBottom: "20px",
             border: "1px solid #ccc",
@@ -52,6 +53,7 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
           display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
+          padding: '0px 20px',
           gap: "15px",
         }}
       >
@@ -73,16 +75,15 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
                 cursor: "pointer",
                 position: "relative",
                 backgroundColor: "#ffffff",
-                padding: "5px",
+                padding: "4px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                borderRadius: "15px",
+                borderRadius: "50%",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                height: "30vw",
-                width: "25vw",
-                margin: "10px",
-                transition: "transform 0.3s, box-shadow 0.3s",
+                height: "19vw",
+                width: "19vw",
+                transition: "transform 0.3s, box-shadow 0.3s"
               }}
               onClick={() => setSelectedItem(item)}
               onMouseEnter={(e) => {
@@ -101,7 +102,7 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  borderRadius: "12px",
+                  borderRadius: "50%",
                 }}
               />
             </div>
@@ -109,9 +110,10 @@ export const WardrobeComponent = ({ list, loading, loadItems }) => {
         )}
 
         <Drawer
-          width={`80%`}
+          // width={`80%`}
           title="Wardrobe"
           placement="right"
+          style={{marginTop: '69.9px'}}
           onClose={() => setSelectedItem(null)}
           open={selectedItem}
         >

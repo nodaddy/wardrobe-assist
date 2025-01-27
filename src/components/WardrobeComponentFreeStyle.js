@@ -36,7 +36,7 @@ export const WardrobeComponentFreeStyle = ({ list, loading, loadItems }) => {
           randomX = Math.random() * (containerWidth - 110);
           randomY = Math.random() * (containerHeight - 400);
           // randomSize = Math.random() * 50 + 50;
-          randomSize = 90;
+          randomSize = 50;
           attempts++;
         } while (
           Array.from(container.children).some((el) =>
@@ -109,19 +109,21 @@ export const WardrobeComponentFreeStyle = ({ list, loading, loadItems }) => {
 
   return (
     <div className="wardrobe-carousel-container" style={{
+        width: '100vw',
+        marginLeft: '-30px',
       border: '1px dashed silver',
-      backgroundImage: list && list.length > 0 ? 'url("https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")' : '',    }} ref={containerRef}>
+      backgroundImage: list && list.length > 0 ? 'url("https://images.pexels.com/photos/626 93/pexels-photo-62693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")' : '',    }} ref={containerRef}>
       { loading ? <Loader /> : list.length  == 0 ? <><br/><br/><br/><br/>Wardrobe is empty again!</> : list.map((item, index) => (
         <div key={item.id || index} style={{
           cursor: 'pointer',
         }}
         onClick={() => setSelectedItem(item)}
         id={`item-${index}`} className="carousel-item">
-          <img src={item.imageUrl} style={{borderRadius: '10px', backgroundColor: 'silver'}} alt={item.name} />
+          <img src={item.imageUrl} style={{borderRadius: '50%', width: '74px', height: '74px', backgroundColor: 'silver'}} alt={item.name} />
           {/* <p>{item.name}</p> */}
         </div>
       ))}
-      <Drawer width={`80%`} style={{}} title="Wardrobe" placement="right" onClose={() => {
+      <Drawer style={{marginTop: '69.9px'}} title="Wardrobe" placement="right" onClose={() => {
         setSelectedItem(null);
       }} open={selectedItem}>
         {selectedItem && (

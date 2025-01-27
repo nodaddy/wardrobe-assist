@@ -1,4 +1,4 @@
-import { AppstoreOutlined, ArrowLeftOutlined, ArrowRightOutlined, BoxPlotOutlined, ExclamationCircleOutlined, FileAddFilled, FileAddOutlined, PlusCircleFilled, PlusCircleOutlined, UploadOutlined } from "@ant-design/icons"
+import { AppstoreOutlined, ArrowLeftOutlined, ArrowRightOutlined, BoxPlotOutlined, ExclamationCircleOutlined, FileAddFilled, FileAddOutlined, PlusCircleFilled, PlusCircleOutlined, SwitcherFilled, SwitcherOutlined, UploadOutlined } from "@ant-design/icons"
 import { Banner } from "../components/Banner"
 import { Alert, Button, Card, Drawer, Tabs, Upload, message } from "antd"
 import UploadOutfitForm from "../components/AddWardrobeItem";
@@ -30,6 +30,7 @@ export const Wardrobe = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         setLoading(true);
         getWardrobeItems().then((data) => {
             setWardrobeItems(data?.items);
@@ -103,21 +104,21 @@ export const Wardrobe = () => {
       ];
 
     return (
-        <div align="center" style={{padding: '0px 30px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
+        <div align="center" style={{padding: '69.94px 30px', height: 'calc(100vh - 60px)', overflowY: 'auto', overflowX: 'hidden'}}>
             <Banner icon={<AppstoreOutlined style={{fontSize: '18px'}} />} title={`${user.displayName.split(' ')[0]}'s Wardrobe`} />
             <br/>
              {/*switch wardrobe view  */}
-             {wardrobeItems && <div align="right" >
-            <button style={{ padding: '10px 15px', background: '#3C9CA0', color: 'white', border: 'none', borderRadius: '8px', fontSize: '16px'}} 
-            onClick={() => setWardrobeItemsFreeStyle(!wardrobeItemsFreeStyle)}>Switch view </button>
+             {wardrobeItems &&<div align="right" >
+            <button style={{ padding: '8px 13px', color: '#3C9CA0', border: 'none', borderRadius: '6px', fontSize: '14px'}} 
+            onClick={() => setWardrobeItemsFreeStyle(!wardrobeItemsFreeStyle)}>Switch view &nbsp; <SwitcherOutlined/> </button>
             </div>}
             <br/>
             <span
                 type="primary"
                 style={{
                   position: 'fixed',            // Fix the position relative to the viewport
-                  bottom: `${wardrobeItems?.length > 0 ? '95px' : '95px'}`,            // Distance from the bottom of the screen
-                  right: `${wardrobeItems?.length > 0 ? '44px' : '44px'}`,                // Distance from the right of the screen
+                  bottom: `${wardrobeItems?.length > 0 ? '83px' : '83px'}`,            // Distance from the bottom of the screen
+                  right: `${wardrobeItems?.length > 0 ? '20px' : '20px'}`,                // Distance from the right of the screen
                   cursor: 'pointer',            // Pointer cursor for hover effect
                   fontSize: '14px',             // Font size
                   color: 'white',               // Text color

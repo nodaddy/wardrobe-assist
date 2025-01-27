@@ -34,7 +34,7 @@ export const Settings= () => {
   };
 
   return (
-    <div style={{padding: '0px 30px', height: 'calc(100vh - 78px)', overflowY: 'auto', overflowX: 'hidden'}}>
+    <div style={{padding: '69px 30px', height: 'calc(100vh - 70px)', overflowY: 'auto', overflowX: 'hidden'}}>
     <Banner icon={<SettingOutlined />} title="Settings" /> 
     <br/>
     <br/>
@@ -116,6 +116,7 @@ export const Settings= () => {
         title="Edit Profile"
         placement="right"
         onClose={() => setDrawerVisible(false)}
+        style={{marginTop: '69px'}}
         visible={drawerVisible}
       >
        <UserDetailsForm />

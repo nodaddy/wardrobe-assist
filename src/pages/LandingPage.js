@@ -12,6 +12,7 @@ import { Settings } from './Settings';
 import { logo } from '../assets';
 import DemoSection from '../components/DemoSection';
 import PricingPage from '../components/PricingPage';
+import { OutfitsCollection } from './OutfitsCollection';
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -273,8 +274,9 @@ function LandingPage() {
         <Wardrobe />
       ) : currentView === 'outfitadvice' ? (
         <OutfitAdvice />
-      ) : currentView === 'additions' ? (
-        <Additions />
+      ) : currentView === 'outfits' ? (
+        // <Additions />
+        <OutfitsCollection />
       ) : currentView === 'settings' ? (
         <Settings />
       ) : null}

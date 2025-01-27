@@ -58,11 +58,11 @@ function Navbar({onChange, currentView}) {
   <div className="navbar-item">
     <span
     onClick={() => {
-      onChange('additions');
+      onChange('outfits');
     }}
-    href="/additions" style={{color: currentView === 'additions' ? '#946d4c' : 'grey'}} className="navbar-link">
+    href="/outfits" style={{color: currentView === 'outfits' ? '#946d4c' : 'grey'}} className="navbar-link">
       <ShopOutlined style={{ fontSize: '18px'}} />
-      <span style={{ fontSize: '10px', marginTop: '5px'  }}>Shop assist</span>
+      <span style={{ fontSize: '10px', marginTop: '5px'  }}>Outfits</span>
     </span>
   </div>
     <div className="navbar-item">

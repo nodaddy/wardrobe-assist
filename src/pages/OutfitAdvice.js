@@ -68,13 +68,13 @@ export const OutfitAdvice = () => {
     return (
         <div
             style={{
-                padding: "0px 30px",
-                height: "calc(100vh - 78px)",
+                padding: "69.94px 30px",
+                height: "70vh",
                 overflowY: "auto",
                 overflowX: "hidden",
             }}
         >
-            <Banner icon={<MessageOutlined />} title="Outfit Assistant" />
+            <Banner icon={<MessageOutlined />} title="A.I. Assistant" />
             <br />
             <br />
             {/* <img src={assist} style={{ width: "130px" }} />
