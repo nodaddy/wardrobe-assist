@@ -210,7 +210,7 @@ function LandingPage() {
             <br/>
             <br/>
           </div> */}
-          {!document.getElementsByClassName('install-button') 
+          {document.getElementsByClassName('install-button').length === 0 
           && <><br/>
           <br/>
           <span style={{color: 'grey', fontSize: '18px'}} onClick={() => {
