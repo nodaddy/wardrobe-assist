@@ -27,7 +27,7 @@ function LandingPage() {
 
   return (
     <>
-      {localStorage.getItem('user') ? <Navbar currentView={currentView} onChange={onChange} /> : <div style={{width: '100vw', height: '66px', backgroundColor: 'whitesmoke', position: 'fixed', bottom: '0px', zIndex: '999'}}></div>}
+      {localStorage.getItem('user') ? <Navbar currentView={currentView} onChange={onChange} /> : ''}
       {currentView === 'home' ? (
         <div
           style={{
@@ -224,16 +224,19 @@ function LandingPage() {
           }}> 
             <br/>
             <Alert message="For android users" showIcon icon={<AndroidOutlined />} />
-            <p>To install/download our app on your Android device:</p>
+            <p>To install this app on your Android device:</p>
               <ol>
-                <li>Visit <i>https://drobe.space</i> in Chrome and you will see a green button 'Install App' on the bottom left to download the app.</li>
+                <li>Open this page in Chrome or your preferred browser.</li>
+                <li>Tap the <strong>Menu</strong> icon (usually three dots) in the top-right corner.</li>
+                <li>Select <strong>Add to Home Screen</strong>.</li>
+                <li>Follow the prompts to add the app to your home screen.</li>
               </ol>
 
             <br/>
             <Alert message="For apple/ios users" showIcon icon={<AppleOutlined />} />
-            <p>To install/download our app on your iPhone:</p>
+            <p>To install this app on your iPhone or iPad:</p>
             <ol>
-              <li>Visit <i>https://drobe.space</i> in Safari</li>
+              <li>Open this page in Safari.</li>
               <li>Tap the <strong>Share</strong> icon (⬆️) in the browser toolbar.</li>
               <li>Select <strong>Add to Home Screen</strong>.</li>
               <li>Follow the prompts to add the app.</li>

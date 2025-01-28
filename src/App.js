@@ -70,11 +70,11 @@ function App() {
   return (
     <div className="App">
       {/* <LocationPrompt /> */}
-      {showInstallButton && (
+      {/* {showInstallButton && (
         <button onClick={handleInstallClick} className='install-button'>
          <AppstoreAddOutlined /> Install App
         </button>
-      )}
+      )} */}
       {
         !userProfile && localStorage.getItem('user') && <div style={{
           height: '100vh',
