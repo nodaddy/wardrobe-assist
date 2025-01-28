@@ -226,7 +226,7 @@ function LandingPage() {
             <Alert message="For android users" showIcon icon={<AndroidOutlined />} />
             <p>To install/download our app on your Android device:</p>
               <ol>
-                <li>Visit <i>https://drobe.space</i> in Chrome and you will see a green button 'Install App' on the bottom left to downlaod the app.</li>
+                <li>Visit <i>https://drobe.space</i> in Chrome and you will see a green button 'Install App' on the bottom left to download the app.</li>
               </ol>
 
             <br/>
